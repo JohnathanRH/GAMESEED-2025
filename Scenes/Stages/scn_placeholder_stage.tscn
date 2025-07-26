@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://brpx58nyhhe1a"]
+
+[ext_resource type="Texture2D" uid="uid://4vyu266rgixd" path="res://Assets/Placeholder/Stage/IKVtl5.png" id="1_jjwn8"]
+[ext_resource type="PackedScene" uid="uid://fhjuspelnwbg" path="res://Scenes/UI/scn_card_layout.tscn" id="2_1w4wk"]
+[ext_resource type="PackedScene" uid="uid://dhkwfv6ve430s" path="res://Scenes/UI/scn_pause_menu.tscn" id="2_lhm5u"]
+
+[node name="ScnPlaceholderStage" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -327.0
+offset_top = -181.0
+offset_right = 330.0
+offset_bottom = 178.0
+texture = ExtResource("1_jjwn8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ScnCardLayout" parent="." instance=ExtResource("2_1w4wk")]
+offset_left = 313.0
+offset_top = 188.0
+offset_right = 313.0
+offset_bottom = 188.0
+grid_scale = 1.5
+
+[node name="ScnPauseMenu" parent="." instance=ExtResource("2_lhm5u")]

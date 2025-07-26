@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dylts7gw1wu7p"]
+
+[ext_resource type="Script" uid="uid://n0sak2hisn3k" path="res://Scripts/gds_card_placeholder.gd" id="2_b1u3y"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mr5lu"]
+size = Vector2(32, 32)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b1u3y"]
+size = Vector2(16, 16)
+
+[node name="ScnCardPlaceholder" type="TextureButton"]
+toggle_mode = true
+texture_normal = SubResource("PlaceholderTexture2D_mr5lu")
+texture_pressed = SubResource("PlaceholderTexture2D_b1u3y")
+script = ExtResource("2_b1u3y")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 33.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 12
+text = "plh"
