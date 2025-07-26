@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="PlayerSaveFile" load_steps=2 format=3 uid="uid://d3r3vb04ar8d0"]
+[gd_resource type="Resource" script_class="PlayerSaveFile" load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://dm7ruk56xplmc" path="res://Save Files/player_save_file.gd" id="1_im46e"]
+[ext_resource type="Script" path="res://Save Files/player_save_file.gd" id="1_im46e"]
 
 [resource]
 script = ExtResource("1_im46e")
 name = "Johnathan"
-hp = 96
+hp = 93
 stage = "one"
 level = 1
 metadata/_custom_type_script = "uid://dm7ruk56xplmc"
