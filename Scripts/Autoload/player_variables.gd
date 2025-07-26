@@ -1,0 +1,28 @@
+extends Node
+
+var save_file : PlayerSaveFile
+var save_path := "res://Save Files/player_save_file.tres"    # The actual resource that saves the data
+
+func _ready() -> void:
+	save_file = load_data()
+
+func load_data() -> PlayerSaveFile:
+	# if there's a save file (.tres) then load it into the save_file var
+	if(ResourceLoader.exists(save_path)):
+		print("Save found")
+		return ResourceLoader.load(save_path).duplicate(true)
+	
+	# Else create a new save file. with the default values (defaults are hard coded for now)
+	else:
+		var new_save = PlayerSaveFile.new() as PlayerSaveFile
+		new_save.hp = 10
+		new_save.name = "Player Name Here"
+		new_save.level = 0
+		new_save.stage = "one"
+		print("Save NOT found")
+		return new_save
+
+func save_data() -> void:
+	# Since this script is autoloaded, this save function can be fired from anywhere!
+	print(save_file.hp)
+	ResourceSaver.save(save_file, save_path)
