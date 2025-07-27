@@ -27,7 +27,6 @@ offset_right = 313.0
 offset_bottom = 188.0
 script = ExtResource("2_g18ga")
 grid_scale = 1.5
-enemy_resource = null
 
 [node name="ScnPauseMenu" parent="." instance=ExtResource("2_lhm5u")]
 
