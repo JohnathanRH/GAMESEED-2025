@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Sprite2D
 
 # still empty, all stats and changes towards them are managed in the PlayerSaveFile resource
 

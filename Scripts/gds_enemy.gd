@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Sprite2D
 
 @export var enemy_resource : EnemyResource
 @onready var player_save = PlayerVariables.save_file as PlayerSaveFile    # Access the save file thru the autoloader
@@ -6,7 +6,7 @@ extends AnimatedSprite2D
 func _ready() -> void:
 	# Enter the data stored in the EnemyResource into whatever requires it
 	
-	sprite_frames = enemy_resource.animation
+	#ssprite_frames = enemy_resource.animation
 	$Timer.wait_time = enemy_resource.atk_interval
 
 func _on_timer_timeout() -> void:
