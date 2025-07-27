@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_im46e")
 name = "Johnathan"
-hp = 3
+hp = 90
 stage = "one"
 level = 1
 has_shield = false

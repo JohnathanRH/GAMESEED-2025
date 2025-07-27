@@ -24,7 +24,7 @@ var match_card_type = ""
 var current_enemy: EnemyResource
 
 # Add card into deck
-func addCard():
+func add_card():
 	while deck.size() < grid_size*grid_size:
 		for type in card2p:
 			deck.append(type)
@@ -36,19 +36,11 @@ func addCard():
 			deck.append(type)
 
 # shuffle card on the deck
-func shuffleCard():
-	addCard()
+func shuffle_card():
+	add_card()
 	deck.shuffle()
 
-
-func _ready() -> void:
-	# Initalize Enemy
-	if enemy_resource:
-		current_enemy = enemy_resource.duplicate() as EnemyResource
-		print("Enemy HP: %d" % current_enemy.hp)
-	
-	shuffleCard()
-	
+func display_card():
 	card_layout.scale = Vector2(grid_scale, grid_scale)
 	var grid = preload("res://Scenes/Component/scn_card_grid.tscn").instantiate()
 	grid.columns = grid_size
@@ -66,6 +58,16 @@ func _ready() -> void:
 		addCard.card_selected.connect(_on_card_selected)
 		grid.add_child(addCard)
 		it += 1
+
+func _ready() -> void:
+	# Initalize Enemy
+	if enemy_resource:
+		current_enemy = enemy_resource.duplicate() as EnemyResource
+		print("Enemy HP: %d" % current_enemy.hp)
+	
+	shuffle_card()
+	display_card()
+	
 
 # Logic when function selected
 func _on_card_selected(card_type: String, card_node: Node):
@@ -86,7 +88,7 @@ func _on_card_selected(card_type: String, card_node: Node):
 			is_checking_match = true
 			card_node.flip_up() # flip up the card
 			currently_flipped_card.append(card_node)
-			mismatch_timer.start(1.2) # flip down the card after pause time
+			mismatch_timer.start(0.5) # flip down the card after pause time
 			return
 		
 		card_node.flip_up() # flip up the card
@@ -111,7 +113,7 @@ func process_successfull_match(card_type: String, matches_card: Array):
 	var current_card_size = matches[card_type].size()
 	if current_card_size >= required_pair:
 		match_card_type = card_type
-		match_timer.start(1.2)
+		match_timer.start(0.5)
 
 # DENAR THIS IS YOUR JOB GO DO YOUR THING
 func use_card(card_type: String):
