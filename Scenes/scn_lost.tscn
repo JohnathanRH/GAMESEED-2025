@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvvj42pd11bdn"]
+
+[ext_resource type="FontFile" uid="uid://bjq6c5ckmc1xc" path="res://Assets/monogram.ttf" id="1_8e8jp"]
+
+[node name="scn_lost" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 149.0
+offset_top = 149.0
+offset_right = 522.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("1_8e8jp")
+theme_override_font_sizes/font_size = 124
+text = "You Lose"

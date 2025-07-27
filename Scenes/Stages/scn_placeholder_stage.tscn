@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://brpx58nyhhe1a"]
+[gd_scene load_steps=9 format=3 uid="uid://brpx58nyhhe1a"]
 
 [ext_resource type="PackedScene" uid="uid://fhjuspelnwbg" path="res://Scenes/UI/scn_card_layout.tscn" id="2_1w4wk"]
 [ext_resource type="Script" uid="uid://warrsyxau5ud" path="res://Scripts/gds_card_layout.gd" id="2_g18ga"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://y10hu4m1b52t" path="res://Scenes/Component/stats_placeholder.tscn" id="4_g18ga"]
 [ext_resource type="PackedScene" uid="uid://cceb780wdmjgn" path="res://Scenes/scn_player.tscn" id="5_tof3l"]
 [ext_resource type="PackedScene" uid="uid://cllomvcvemhhe" path="res://Scenes/scn_enemy.tscn" id="6_7tse1"]
+[ext_resource type="PackedScene" uid="uid://cx2ba2pdnkx63" path="res://Scenes/Component/scn_enemy_stats.tscn" id="6_g18ga"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6ell0"]
 
@@ -52,3 +53,19 @@ text = "Hit E to save"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="stats_placeholder" parent="CanvasLayer" instance=ExtResource("4_g18ga")]
+
+[node name="scn_enemy_stats" parent="CanvasLayer" instance=ExtResource("6_g18ga")]
+
+[node name="TextureProgressBar" parent="CanvasLayer/scn_enemy_stats" index="0"]
+offset_left = 212.0
+offset_top = 92.0
+offset_right = 236.0
+offset_bottom = 98.0
+
+[node name="hp_bar" parent="CanvasLayer/scn_enemy_stats" index="1"]
+offset_left = 171.0
+offset_top = 23.0
+offset_right = 279.0
+offset_bottom = 46.0
+
+[editable path="CanvasLayer/scn_enemy_stats"]
