@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://brpx58nyhhe1a"]
+[gd_scene load_steps=8 format=3 uid="uid://brpx58nyhhe1a"]
 
 [ext_resource type="Texture2D" uid="uid://4vyu266rgixd" path="res://Assets/Placeholder/Stage/IKVtl5.png" id="1_jjwn8"]
 [ext_resource type="PackedScene" uid="uid://fhjuspelnwbg" path="res://Scenes/UI/scn_card_layout.tscn" id="2_1w4wk"]
 [ext_resource type="PackedScene" uid="uid://dhkwfv6ve430s" path="res://Scenes/UI/scn_pause_menu.tscn" id="2_lhm5u"]
+[ext_resource type="PackedScene" uid="uid://y10hu4m1b52t" path="res://Scenes/Component/stats_placeholder.tscn" id="4_g18ga"]
+[ext_resource type="PackedScene" uid="uid://cceb780wdmjgn" path="res://Scenes/player.tscn" id="5_tof3l"]
+[ext_resource type="PackedScene" uid="uid://cllomvcvemhhe" path="res://Scenes/enemy.tscn" id="6_7tse1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6ell0"]
 
 [node name="ScnPlaceholderStage" type="Node2D"]
 
@@ -25,3 +30,38 @@ offset_bottom = 188.0
 grid_scale = 1.5
 
 [node name="ScnPauseMenu" parent="." instance=ExtResource("2_lhm5u")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.372549, 0.882353, 0.243137, 1)
+position = Vector2(-165, -83)
+scale = Vector2(261.875, 145.818)
+texture = SubResource("PlaceholderTexture2D_6ell0")
+
+[node name="player" parent="." instance=ExtResource("5_tof3l")]
+position = Vector2(-247, -111)
+scale = Vector2(0.492188, 0.492188)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -369.0
+offset_top = -210.0
+offset_right = -30.0
+offset_bottom = 246.0
+theme_override_font_sizes/font_size = 32
+text = "Catatan dev: Bug! Node camera entah kenapa harus di zoom out. Kayaknya gara gara settingan resolusi nya. Jangan lupa hapus pesan ini."
+autowrap_mode = 2
+
+[node name="enemy" parent="." instance=ExtResource("6_7tse1")]
+position = Vector2(-96, -110)
+scale = Vector2(0.476563, 0.476563)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -216.0
+offset_top = -43.0
+offset_right = -120.0
+offset_bottom = -20.0
+text = "Hit E to save"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="stats_placeholder" parent="CanvasLayer" instance=ExtResource("4_g18ga")]

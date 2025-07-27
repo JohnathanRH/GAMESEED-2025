@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_im46e")
 name = "Johnathan"
-hp = 93
+hp = 80
 stage = "one"
 level = 1
 metadata/_custom_type_script = "uid://dm7ruk56xplmc"

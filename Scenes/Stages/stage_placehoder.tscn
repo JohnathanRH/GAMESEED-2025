@@ -19,11 +19,8 @@ texture = SubResource("PlaceholderTexture2D_d5k1m")
 [node name="player" parent="." instance=ExtResource("2_i5dm6")]
 position = Vector2(190, 100)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(320, 179)
-zoom = Vector2(0.45, 0.45)
-
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -369.0
 offset_top = -210.0
 offset_right = -30.0

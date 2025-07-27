@@ -23,7 +23,6 @@ var matched_pairs := 0
 
 func shuffleCard():
 	addCard()
-	
 	deck.shuffle()
 	
 	
@@ -33,7 +32,7 @@ func _ready() -> void:
 	$VBoxContainer.scale = Vector2(grid_scale, grid_scale)
 	var grid = preload("res://Scenes/Component/scn_card_grid.tscn").instantiate()
 	grid.columns = grid_size
-	grid.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	#grid.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	$VBoxContainer.add_child(grid)
 	
 	
@@ -73,6 +72,10 @@ func _on_card_selected(card_type: String, card_node: Node):
 
 			if matched_pairs >= cost:
 				apply_card_effect(card1.card_type)
+				for card in selected_cards:
+					card.modulate.a = 0
+					card.process_mode = Node.PROCESS_MODE_DISABLED
+					card.mouse_filter = Control.MOUSE_FILTER_IGNORE
 				selected_cards.clear()
 		else:
 			selected_cards.clear()
