@@ -32,6 +32,10 @@ window/stretch/scale_mode="integer"
 
 project/assembly_name="OldButNew"
 
+[gui]
+
+theme/custom_font="uid://c0ged0ullqn7b"
+
 [input]
 
 btn_pause={
