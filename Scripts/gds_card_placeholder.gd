@@ -1,28 +1,46 @@
 extends TextureButton
 
 @export var card_type: String = ""
+@export var card_back_texture: Texture2D
+@export var card_front_texture: Texture2D
+var card_symbol = {"attack":"res://Assets/Card/SymbolSword.png", 
+					"fireball":"res://Assets/Card/SymbolFire.png", 
+					"heal":"res://Assets/Card/SymbolHeal.png", 
+					"shield":"res://Assets/Card/SymbolShield.png"}
+@export var is_flipped_up = false
 
 signal card_selected(card_type: String, card_node: Node)
 
-var is_selected := false
-
 func _ready() -> void:
-	# Set visible label if it exists
-	if has_node("Label"):
-		$Label.text = card_type
-
-	# Connect press event
-	self.pressed.connect(on_card_pressed)
-
-func on_card_pressed():
-	# Toggle Selection
-	is_selected = !is_selected
-	update_visual()
+	self.pressed.connect(_on_button_pressed)
+	self.texture_normal = card_back_texture
+	$Sprite2D.texture = load(card_symbol[card_type])
+	
+func _on_button_pressed():
 	emit_signal("card_selected", card_type, self)
-
-func set_selected(state: bool):
-	is_selected = state
-	update_visual()
-
-func update_visual():
 	pass
+	
+func flip_up():
+	if is_flipped_up: return
+	
+	is_flipped_up = true
+	$Sprite2D.visible = true
+	self.texture_normal = card_front_texture
+	self.disabled = true
+	
+	
+	pass
+
+func flip_down():
+	if !is_flipped_up: return
+	
+	is_flipped_up = false
+	$Sprite2D.visible = false
+	self.texture_normal = card_back_texture
+	self.disabled = false
+	pass
+
+func set_as_matched():
+	self.disabled = true
+	
+	
