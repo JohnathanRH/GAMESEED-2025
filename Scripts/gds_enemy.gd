@@ -15,9 +15,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	atk_bar.value = $Timer.time_left*100 # <- This controls the smoothness of the progress, less means more snappy
 	hp_bar.text = "Enemy HP: " + str(enemy_resource.hp)    # Not optimal, is only temporary
+	if(enemy_resource.hp <= 0):
+		get_tree().change_scene_to_file("res://Scenes/scn_win.tscn")
 func _on_timer_timeout() -> void:
 	if player_save.has_shield:
 		print("Shield blocked the attack!")
 		player_save.setShield(false)  # Shield is used
 	else:
 		player_save.setHp(player_save.hp - 1)    # Hard coded damage
+		if(player_save.hp <= 0):
+			get_tree().change_scene_to_file("res://Scenes/scn_lost.tscn")
