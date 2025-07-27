@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crd5omicehi2f"
-path="res://.godot/imported/slaythespire.jpg-0826e93ef42e0a803a6bd8f6d8b48984.ctex"
+uid="uid://d24od1l5ukc6j"
+path="res://.godot/imported/enemy_icon.png-5f0bbdc068b349d912cfb7ed897683a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://documentation/slaythespire.jpg"
-dest_files=["res://.godot/imported/slaythespire.jpg-0826e93ef42e0a803a6bd8f6d8b48984.ctex"]
+source_file="res://asset (do not merge this yet)/enemy_icon.png"
+dest_files=["res://.godot/imported/enemy_icon.png-5f0bbdc068b349d912cfb7ed897683a0.ctex"]
 
 [params]
 
