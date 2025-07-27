@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://y10hu4m1b52t"]
+[gd_scene load_steps=3 format=3 uid="uid://y10hu4m1b52t"]
 
 [ext_resource type="Script" uid="uid://daqpanysdsmkw" path="res://Scripts/gds_stats_placeholder.gd" id="1_hxo37"]
+[ext_resource type="FontFile" uid="uid://bjq6c5ckmc1xc" path="res://Assets/monogram.ttf" id="2_imt2c"]
 
 [node name="stats_placeholder" type="Node"]
 script = ExtResource("1_hxo37")
@@ -11,6 +12,7 @@ offset_left = 20.0
 offset_top = 224.0
 offset_right = 170.0
 offset_bottom = 258.0
+theme_override_fonts/font = ExtResource("2_imt2c")
 theme_override_font_sizes/font_size = 24
 text = "Player HP: xy"
 
@@ -20,6 +22,7 @@ offset_left = 20.0
 offset_top = 192.0
 offset_right = 255.0
 offset_bottom = 226.0
+theme_override_fonts/font = ExtResource("2_imt2c")
 theme_override_font_sizes/font_size = 24
 text = "Player Name: Lorem"
 
@@ -29,5 +32,6 @@ offset_left = 20.0
 offset_top = 255.0
 offset_right = 197.0
 offset_bottom = 289.0
+theme_override_fonts/font = ExtResource("2_imt2c")
 theme_override_font_sizes/font_size = 24
 text = "Player Level: xy"

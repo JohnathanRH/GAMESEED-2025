@@ -36,7 +36,11 @@ offset_top = -353.0
 offset_right = -9.0
 offset_bottom = -33.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="MismatchTimer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="MatchTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="MismatchTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MatchTimer" to="." method="_on_match_timer_timeout"]
