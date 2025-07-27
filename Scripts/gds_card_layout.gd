@@ -1,12 +1,12 @@
 extends Control
 
 @export var grid_size = 5
-@export var grid_scale: float = 1
+@export var grid_scale = 1
 @onready var player_save = PlayerVariables.save_file as PlayerSaveFile
 
 # Card Shuffle Variable
-var card2p = ["attack", "fireball"]
-var card3p = ["heal", "shield"]
+var card2p = ["attack", "fireball", "shield"]
+var card3p = ["heal"]
 var deck = []
 @onready var card_layout = $VBoxContainer
 

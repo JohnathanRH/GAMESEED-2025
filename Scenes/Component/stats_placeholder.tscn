@@ -1,34 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://y10hu4m1b52t"]
+[gd_scene load_steps=2 format=3 uid="uid://y10hu4m1b52t"]
 
-[ext_resource type="Script" uid="uid://daqpanysdsmkw" path="res://Scripts/gds_stats_placeholder.gd" id="1_hxo37"]
-[ext_resource type="FontFile" uid="uid://bjq6c5ckmc1xc" path="res://Assets/monogram.ttf" id="2_imt2c"]
+[ext_resource type="Script" path="res://Scripts/gds_stats_placeholder.gd" id="1_hxo37"]
 
 [node name="stats_placeholder" type="Node"]
 script = ExtResource("1_hxo37")
 
-[node name="hp" type="Label" parent="."]
-offset_left = 20.0
-offset_top = 224.0
-offset_right = 170.0
-offset_bottom = 258.0
-theme_override_fonts/font = ExtResource("2_imt2c")
-theme_override_font_sizes/font_size = 24
-text = "Player HP: xy"
-
 [node name="player_name" type="Label" parent="."]
 offset_left = 20.0
-offset_top = 192.0
-offset_right = 255.0
-offset_bottom = 226.0
-theme_override_fonts/font = ExtResource("2_imt2c")
-theme_override_font_sizes/font_size = 24
+offset_top = 128.0
+offset_right = 128.0
+offset_bottom = 141.0
 text = "Player Name: Lorem"
+metadata/_edit_use_anchors_ = true
+
+[node name="hp" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 141.0
+offset_right = 98.0
+offset_bottom = 154.0
+text = "Player HP: xy"
+metadata/_edit_use_anchors_ = true
 
 [node name="level" type="Label" parent="."]
 offset_left = 20.0
-offset_top = 255.0
-offset_right = 197.0
-offset_bottom = 289.0
-theme_override_fonts/font = ExtResource("2_imt2c")
-theme_override_font_sizes/font_size = 24
+offset_top = 154.0
+offset_right = 116.0
+offset_bottom = 167.0
 text = "Player Level: xy"
+metadata/_edit_use_anchors_ = true
