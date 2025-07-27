@@ -2,6 +2,7 @@ extends Control
 
 @export var grid_size = 5
 @export var grid_scale: float = 1
+@onready var player_save = PlayerVariables.save_file as PlayerSaveFile
 
 # Card Shuffle Variable
 var card2p = ["attack", "fireball"]
@@ -18,7 +19,9 @@ var match_card_type = ""
 @onready var mismatch_timer = $MismatchTimer
 @onready var match_timer = $MatchTimer
 
-
+# Enemy
+@export var enemy_resource: EnemyResource
+var current_enemy: EnemyResource
 
 # Add card into deck
 func addCard():
@@ -39,6 +42,11 @@ func shuffleCard():
 
 
 func _ready() -> void:
+	# Initalize Enemy
+	if enemy_resource:
+		current_enemy = enemy_resource.duplicate() as EnemyResource
+		print("Enemy HP: %d" % current_enemy.hp)
+	
 	shuffleCard()
 	
 	card_layout.scale = Vector2(grid_scale, grid_scale)
@@ -109,16 +117,25 @@ func process_successfull_match(card_type: String, matches_card: Array):
 func use_card(card_type: String):
 	match card_type:
 		"attack":
-			print("Use Attack")
+			damage_enemy(1) # Deals 2 damage
 		"fireball":
-			print("Use Fireball")
+			damage_enemy(2) # Deals 1 damage
 		"shield": 
-			print("Use Shield")
+			player_save.setShield(true)  # Activate shield
+			print("Used Shield")
 		"heal":
-			print("Use Heal")
+			player_save.setHp(player_save.hp + 2) # Heals 2 hp
 		_:
 			return 99
 
+func damage_enemy(amount: int) -> void:
+	current_enemy.hp -= amount
+	print("Enemy takes %d damage. Remaining HP: %d" % [amount, current_enemy.hp])
+
+	if current_enemy.hp <= 0:
+		print("Enemy died!")
+
+	
 func get_match_size(card_type: String) -> int:
 	match card_type:
 		"attack", "fireball":
