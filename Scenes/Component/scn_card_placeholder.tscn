@@ -14,8 +14,9 @@ texture_normal = SubResource("PlaceholderTexture2D_mr5lu")
 texture_pressed = SubResource("PlaceholderTexture2D_b1u3y")
 script = ExtResource("2_b1u3y")
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 13.0
-text = "Plh"
+offset_right = 33.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 12
+text = "plh"
