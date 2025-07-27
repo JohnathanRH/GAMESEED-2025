@@ -3,10 +3,24 @@ extends Control
 @export var grid_size = 5
 @export var grid_scale: float = 1
 
-var card2p = ["attack", "fireball", "heal", "shield"]
+# Card Shuffle Variable
+var card2p = ["attack", "fireball"]
 var card3p = ["heal", "shield"]
 var deck = []
+@onready var card_layout = $VBoxContainer
 
+# Card Matching Variable
+var required_match = 0
+var matches = {}
+var currently_flipped_card = []
+var is_checking_match = false
+var match_card_type = ""
+@onready var mismatch_timer = $MismatchTimer
+@onready var match_timer = $MatchTimer
+
+
+
+# Add card into deck
 func addCard():
 	while deck.size() < grid_size*grid_size:
 		for type in card2p:
@@ -18,23 +32,20 @@ func addCard():
 			deck.append(type)
 			deck.append(type)
 
-var selected_cards: Array = []
-var matched_pairs := 0
-
+# shuffle card on the deck
 func shuffleCard():
 	addCard()
-	
 	deck.shuffle()
-	
-	
+
+
 func _ready() -> void:
 	shuffleCard()
 	
-	$VBoxContainer.scale = Vector2(grid_scale, grid_scale)
+	card_layout.scale = Vector2(grid_scale, grid_scale)
 	var grid = preload("res://Scenes/Component/scn_card_grid.tscn").instantiate()
 	grid.columns = grid_size
-	grid.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	$VBoxContainer.add_child(grid)
+	#grid.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	card_layout.add_child(grid)
 	
 	
 	var it = 0;
@@ -42,63 +53,94 @@ func _ready() -> void:
 	for type in deck:
 		if it >= grid_pow:
 			break
-		var addCard = preload("res://Scenes/Component/scn_card_placeholder.tscn").instantiate()
+		var addCard = preload("res://Scenes/Component/scn_card.tscn").instantiate()
 		addCard.card_type = type
 		addCard.card_selected.connect(_on_card_selected)
 		grid.add_child(addCard)
 		it += 1
-			
-	
-	pass
 
+# Logic when function selected
 func _on_card_selected(card_type: String, card_node: Node):
-	# Selection Logic
-	if selected_cards.has(card_node):
-		selected_cards.erase(card_node)
-		card_node.set_selected(false)
-		matched_pairs = max(matched_pairs - 1, 0)
+	if is_checking_match or card_node.is_flipped_up: # check if card is on checking or flipped up
 		return
 	
-	# Select cards
-	selected_cards.append(card_node)
-	card_node.set_selected(true)
+	# if the card that currently flipped up is empty
+	if currently_flipped_card.is_empty(): # Start a new turn
+		required_match = get_match_size(card_type) # set the required match
+		
+		card_node.flip_up()
+		currently_flipped_card.append(card_node)
+	else: # Continue the existing turn
+		var first_card_type = currently_flipped_card[0].card_type
+		
+		# if the card is not the same type 
+		if card_type != first_card_type: # give a pause and flip down the card
+			is_checking_match = true
+			card_node.flip_up() # flip up the card
+			currently_flipped_card.append(card_node)
+			mismatch_timer.start(1.2) # flip down the card after pause time
+			return
+		
+		card_node.flip_up() # flip up the card
+		currently_flipped_card.append(card_node) # track flipped up card
+	
+	# if the number of currently flipped up card equal to required match
+	if currently_flipped_card.size() == required_match: # check if the match card are succesfull
+		is_checking_match = true
+		process_successfull_match(card_type, currently_flipped_card)
+		currently_flipped_card.clear() # clear the track of flipped up card
+		
+		required_match = 0 # reset the required match
+		is_checking_match = false
 
-	if selected_cards.size() >= 2:
-		var card1 = selected_cards[-2]
-		var card2 = selected_cards[-1]
+# process the succesfull match
+func process_successfull_match(card_type: String, matches_card: Array):
+	if not matches.has(card_type):
+		matches[card_type] = []
+	matches[card_type].append_array(matches_card)
+	
+	var required_pair = get_match_size(card_type)
+	var current_card_size = matches[card_type].size()
+	if current_card_size >= required_pair:
+		match_card_type = card_type
+		match_timer.start(1.2)
 
-		if card1.card_type == card2.card_type:
-			matched_pairs += 1
-			var cost = get_card_cost(card1.card_type)
-
-			if matched_pairs >= cost:
-				apply_card_effect(card1.card_type)
-				selected_cards.clear()
-		else:
-			selected_cards.clear()
-
-func _clear_selected_cards():
-	for card in selected_cards:
-		card.set_selected(false)
-	selected_cards.clear()
-	matched_pairs = 0
-
-func get_card_cost(card_type: String) -> int:
+# DENAR THIS IS YOUR JOB GO DO YOUR THING
+func use_card(card_type: String):
 	match card_type:
-		"attack", "fireball":
-			return 1
-		"heal", "shield":
-			return 2
+		"attack":
+			print("Use Attack")
+		"fireball":
+			print("Use Fireball")
+		"shield": 
+			print("Use Shield")
+		"heal":
+			print("Use Heal")
 		_:
 			return 99
 
-func apply_card_effect(card_type: String):
+func get_match_size(card_type: String) -> int:
 	match card_type:
-		"attack":
-			print("Attack: Deal 1 damage")
-		"fireball":
-			print("Fireball: Deal 2 damage")
-		"heal":
-			print("Heal: Restore 2 HP")
-		"shield":
-			print("Shield: Block an Attack")
+		"attack", "fireball":
+			return 2
+		"shield", "heal":
+			return 3
+		_:
+			return 99
+
+func _on_timer_timeout() -> void:
+	for card in currently_flipped_card:
+		card.flip_down()
+	
+	currently_flipped_card.clear()
+	required_match = 0
+	is_checking_match = false
+
+
+func _on_match_timer_timeout() -> void:
+		use_card(match_card_type)
+		for card in matches[match_card_type]:
+			card.modulate.a = 0
+			card.disabled = true
+		matches.erase(match_card_type)
+		match_card_type = ""
