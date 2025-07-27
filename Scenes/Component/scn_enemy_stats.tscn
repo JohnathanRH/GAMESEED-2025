@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx2ba2pdnkx63"]
+
+[ext_resource type="Texture2D" uid="uid://clb4flc3ah5op" path="res://Assets/Placeholder/progress_white.png" id="1_u4w5w"]
+[ext_resource type="Texture2D" uid="uid://b3ggh75iu65u8" path="res://Assets/Placeholder/progress_outline.png" id="2_rf0ix"]
+[ext_resource type="Texture2D" uid="uid://cljcuvrwogvn4" path="res://Assets/Placeholder/progress_red.png" id="3_b56kh"]
+[ext_resource type="FontFile" uid="uid://bjq6c5ckmc1xc" path="res://Assets/monogram.ttf" id="4_rf0ix"]
+
+[node name="scn_enemy_stats" type="Node"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 204.0
+offset_top = 134.0
+offset_right = 228.0
+offset_bottom = 140.0
+max_value = 1.0
+value = 1.0
+fill_mode = 1
+texture_under = ExtResource("1_u4w5w")
+texture_over = ExtResource("2_rf0ix")
+texture_progress = ExtResource("3_b56kh")
+
+[node name="hp_bar" type="Label" parent="."]
+offset_left = 458.0
+offset_top = 223.0
+offset_right = 566.0
+offset_bottom = 246.0
+theme_override_fonts/font = ExtResource("4_rf0ix")
+theme_override_font_sizes/font_size = 24
+text = "Enemy HP: xy"

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b40o8yqwf41xf"]
+
+[ext_resource type="FontFile" uid="uid://bjq6c5ckmc1xc" path="res://Assets/monogram.ttf" id="1_0pmjo"]
+
+[node name="scn_win" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 149.0
+offset_top = 149.0
+offset_right = 522.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("1_0pmjo")
+theme_override_font_sizes/font_size = 124
+text = "You Win"

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EnemyResource" load_steps=3 format=3 uid="uid://i613t5c2g4x1"]
 
 [ext_resource type="Script" uid="uid://b7pkd4wj6qjtu" path="res://Scripts/Resources/enemy/enemy.gd" id="1_i7xmp"]
-[ext_resource type="SpriteFrames" uid="uid://x5crmnjjp0ya" path="res://asset (plz merge into the Asset folder)/animation/enemy1.tres" id="1_tftdy"]
+[ext_resource type="SpriteFrames" uid="uid://x5crmnjjp0ya" path="res://asset (do not merge this yet)/animation/enemy1.tres" id="1_tftdy"]
 
 [resource]
 script = ExtResource("1_i7xmp")
