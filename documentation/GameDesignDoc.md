@@ -45,10 +45,6 @@ The combat window is inspired by Slay the Spire's combat screen.
 
 ![The combat screen in Slay the Spire](slaythespire.jpg)
 
-Meanwhile, the grid or card matching area is inspired by Balatro.
-
-![Penyakit Balatro gila](balatro.jpg)
-
 ## Music/Sound
 TBA
 
