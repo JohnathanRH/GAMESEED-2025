@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://fy4idowpr0e5"]
 
-[ext_resource type="Script" uid="uid://j6luobpjiuxc" path="res://Scenes/UI/gds_save_slot.gd" id="1_eo2hn"]
+[ext_resource type="Script" uid="uid://j6luobpjiuxc" path="res://Scripts/gds_save_slot.gd" id="1_eo2hn"]
 
 [node name="ScnSaveSlot" type="Button"]
 text = "Player Name"

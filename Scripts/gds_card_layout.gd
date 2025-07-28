@@ -24,6 +24,10 @@ var match_card_type = ""
 @onready var mismatch_timer = $MismatchTimer
 @onready var match_timer = $MatchTimer
 
+# Enemy
+@export var enemy_resource: EnemyResource
+var current_enemy: EnemyResource
+
 # keep track how many card matched
 var pair_matched: int = 0:
 	set(add_pair):
@@ -32,10 +36,6 @@ var pair_matched: int = 0:
 		if(pair_matched >= x+y):
 			grid.shuffle_children()
 			pair_matched = 0
-
-# Enemy
-@export var enemy_resource: EnemyResource
-var current_enemy: EnemyResource
 
 # Add card into deck
 func add_card():
@@ -83,7 +83,6 @@ func _ready() -> void:
 	shuffle_card()
 	display_card()
 	grid.shuffle_children()
-	
 
 
 # Logic when function selected

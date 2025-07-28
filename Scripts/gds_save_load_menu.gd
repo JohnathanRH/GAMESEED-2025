@@ -10,8 +10,8 @@ var stage_path = ""
 func _ready() -> void:
 	
 	for i in range(1, 4):
-		#var slot_path = SAVE_DIR + "slot_" + str(i) + SAVE_EXT
-		var slot_path = "res://Save Files/player_save_file.tres"
+		var slot_path = SAVE_DIR + "slot_" + str(i) + SAVE_EXT
+		#var slot_path = "res://Save Files/player_save_file.tres"
 		var slot_instance = slot_scene.instantiate()
 		
 		slot_instance.pressed.connect(_on_save_button_pressed.bind(i))
@@ -19,13 +19,20 @@ func _ready() -> void:
 		if FileAccess.file_exists(slot_path):
 			var save_data: PlayerSaveFile = ResourceLoader.load(slot_path)
 			stage_path = save_data.stage
-			slot_instance.setup(save_data)
+			slot_instance.setup(save_data, slot_path)
 		else:
-			slot_instance.empty_setup()
+			slot_instance.empty_setup(slot_path)
 		slot_container.add_child(slot_instance)
 	
 	pass
 
 func _on_save_button_pressed(slot_number: int):
 	print("Button on save slot " + str(slot_number) + "pressed")
-	get_tree().change_scene_to_file(stage_path)
+	
+	var slot = slot_container.get_child(slot_number-1)
+	
+	if slot.is_empty:
+		get_tree().change_scene_to_file("res://Scenes/UI/scn_input_empty_save_slot.tscn")
+		PlayerVariables.set_save_path(slot.save_path)
+	else:
+		get_tree().change_scene_to_file(stage_path)
