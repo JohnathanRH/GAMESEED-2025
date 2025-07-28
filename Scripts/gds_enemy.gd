@@ -5,6 +5,7 @@ extends Sprite2D
 @onready var atk_bar = $"../CanvasLayer/scn_enemy_stats/TextureProgressBar" as TextureProgressBar
 @onready var hp_bar = $"../CanvasLayer/scn_enemy_stats/hp_bar" as Label
 
+
 func _ready() -> void:
 	# Enter the data stored in the EnemyResource into whatever requires it
 	
@@ -17,6 +18,8 @@ func _process(delta: float) -> void:
 	hp_bar.text = "Enemy HP: " + str(enemy_resource.hp)    # Not optimal, is only temporary
 	if(enemy_resource.hp <= 0):
 		get_tree().change_scene_to_file("res://Scenes/scn_win.tscn")
+
+
 func _on_timer_timeout() -> void:
 	if player_save.has_shield:
 		print("Shield blocked the attack!")

@@ -1,13 +1,18 @@
 extends Control
 
 @export var grid_size = 5
-@export var grid_scale = 1
+@export var grid_scale: float = 1
 @onready var player_save = PlayerVariables.save_file as PlayerSaveFile
 
 # Card Shuffle Variable
-var card2p = ["attack", "fireball", "shield"]
-var card3p = ["heal"]
-var deck = []
+var card2p = ["attack", "fireball"]
+var card3p = ["heal", "shield"]
+@export var deck = []
+var grid = preload("res://Scenes/Component/scn_card_grid.tscn").instantiate()
+
+## 2x + 3y = grid_size*grid_size
+@export var x = 8 
+@export var y = 3
 @onready var card_layout = $VBoxContainer
 
 # Card Matching Variable
@@ -19,32 +24,39 @@ var match_card_type = ""
 @onready var mismatch_timer = $MismatchTimer
 @onready var match_timer = $MatchTimer
 
+# keep track how many card matched
+var pair_matched: int = 0:
+	set(add_pair):
+		pair_matched = add_pair 
+		print("current matched pair: ", pair_matched)
+		if(pair_matched >= x+y):
+			grid.shuffle_children()
+
 # Enemy
 @export var enemy_resource: EnemyResource
 var current_enemy: EnemyResource
 
 # Add card into deck
 func add_card():
-	while deck.size() < grid_size*grid_size:
-		for type in card2p:
-			deck.append(type)
-			deck.append(type)
-	
-		for type in card3p:
-			deck.append(type)
-			deck.append(type)
-			deck.append(type)
+	for i in range(x):
+		deck.append(card2p[i%card2p.size()])
+		deck.append(card2p[i%card2p.size()])
+	for j in range(y):
+		deck.append(card3p[j%card3p.size()])
+		deck.append(card3p[j%card3p.size()])
+		deck.append(card3p[j%card3p.size()])
+
 
 # shuffle card on the deck
 func shuffle_card():
 	add_card()
+	randomize()
 	deck.shuffle()
 
 func display_card():
 	card_layout.scale = Vector2(grid_scale, grid_scale)
-	var grid = preload("res://Scenes/Component/scn_card_grid.tscn").instantiate()
+	
 	grid.columns = grid_size
-	#grid.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	card_layout.add_child(grid)
 	
 	
@@ -64,10 +76,14 @@ func _ready() -> void:
 	if enemy_resource:
 		current_enemy = enemy_resource.duplicate() as EnemyResource
 		print("Enemy HP: %d" % current_enemy.hp)
+		for i in deck:
+			print("this is are the deck : ", i)
 	
 	shuffle_card()
 	display_card()
+	grid.shuffle_children()
 	
+
 
 # Logic when function selected
 func _on_card_selected(card_type: String, card_node: Node):
@@ -88,7 +104,7 @@ func _on_card_selected(card_type: String, card_node: Node):
 			is_checking_match = true
 			card_node.flip_up() # flip up the card
 			currently_flipped_card.append(card_node)
-			mismatch_timer.start(0.5) # flip down the card after pause time
+			mismatch_timer.start(1.2) # flip down the card after pause time
 			return
 		
 		card_node.flip_up() # flip up the card
@@ -113,7 +129,8 @@ func process_successfull_match(card_type: String, matches_card: Array):
 	var current_card_size = matches[card_type].size()
 	if current_card_size >= required_pair:
 		match_card_type = card_type
-		match_timer.start(0.5)
+		pair_matched += 1 	
+		match_timer.start(1.2)
 
 # DENAR THIS IS YOUR JOB GO DO YOUR THING
 func use_card(card_type: String):
@@ -133,7 +150,7 @@ func use_card(card_type: String):
 func damage_enemy(amount: int) -> void:
 	current_enemy.hp -= amount
 	print("Enemy takes %d damage. Remaining HP: %d" % [amount, current_enemy.hp])
-
+	enemy_resource.setHP(current_enemy.hp)
 	if current_enemy.hp <= 0:
 		print("Enemy died!")
 
@@ -146,6 +163,7 @@ func get_match_size(card_type: String) -> int:
 			return 3
 		_:
 			return 99
+	
 
 func _on_timer_timeout() -> void:
 	for card in currently_flipped_card:
