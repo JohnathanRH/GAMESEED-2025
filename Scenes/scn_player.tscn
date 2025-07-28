@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cceb780wdmjgn"]
 
 [ext_resource type="Texture2D" uid="uid://r85ln5y2abxn" path="res://Assets/Entity/CharPlayer.png" id="1_cvnsp"]
-[ext_resource type="Script" path="res://Scripts/gds_player.gd" id="2_x8wep"]
+[ext_resource type="Script" uid="uid://db040f5j28gxd" path="res://Scripts/gds_player.gd" id="2_x8wep"]
 
 [node name="player" type="Sprite2D"]
 texture = ExtResource("1_cvnsp")
