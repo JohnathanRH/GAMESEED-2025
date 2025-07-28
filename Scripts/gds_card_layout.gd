@@ -31,6 +31,7 @@ var pair_matched: int = 0:
 		print("current matched pair: ", pair_matched)
 		if(pair_matched >= x+y):
 			grid.shuffle_children()
+			pair_matched = 0
 
 # Enemy
 @export var enemy_resource: EnemyResource
@@ -104,7 +105,7 @@ func _on_card_selected(card_type: String, card_node: Node):
 			is_checking_match = true
 			card_node.flip_up() # flip up the card
 			currently_flipped_card.append(card_node)
-			mismatch_timer.start(1.2) # flip down the card after pause time
+			mismatch_timer.start(0.6) # flip down the card after pause time
 			return
 		
 		card_node.flip_up() # flip up the card
@@ -129,8 +130,8 @@ func process_successfull_match(card_type: String, matches_card: Array):
 	var current_card_size = matches[card_type].size()
 	if current_card_size >= required_pair:
 		match_card_type = card_type
+		match_timer.start(0.6)
 		pair_matched += 1 	
-		match_timer.start(1.2)
 
 # DENAR THIS IS YOUR JOB GO DO YOUR THING
 func use_card(card_type: String):
@@ -179,5 +180,6 @@ func _on_match_timer_timeout() -> void:
 		for card in matches[match_card_type]:
 			card.modulate.a = 0
 			card.disabled = true
+			card.flip_down()
 		matches.erase(match_card_type)
-		match_card_type = ""
+		match_card_type = ""	
