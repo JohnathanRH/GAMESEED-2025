@@ -19,7 +19,6 @@ func _process(delta: float) -> void:
 	if(enemy_resource.hp <= 0):
 		get_tree().change_scene_to_file("res://Scenes/scn_win.tscn")
 
-
 func _on_timer_timeout() -> void:
 	if player_save.has_shield:
 		print("Shield blocked the attack!")
