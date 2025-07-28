@@ -18,7 +18,7 @@ func load_data() -> PlayerSaveFile:
 		new_save.hp = 10
 		new_save.name = "Player Name Here"
 		new_save.level = 0
-		new_save.stage = "one"
+		new_save.stage = "res://Scenes/Stages/scn_placeholder_stage.tscn"
 		print("Save NOT found")
 		return new_save
 
@@ -26,3 +26,7 @@ func save_data() -> void:
 	# Since this script is autoloaded, this save function can be fired from anywhere!
 	print(save_file.hp)
 	ResourceSaver.save(save_file, save_path)
+
+func set_save_path(new_save_path: String):
+	save_path = new_save_path
+	save_file = load_data()
