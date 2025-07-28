@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dowgkbu2yyp64"
-path="res://.godot/imported/slaythespire.jpg-0826e93ef42e0a803a6bd8f6d8b48984.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://dn8sbmk3dtqsu"
+valid=false
 
 [deps]
 
-source_file="res://documentation/slaythespire.jpg"
-dest_files=["res://.godot/imported/slaythespire.jpg-0826e93ef42e0a803a6bd8f6d8b48984.ctex"]
+source_file="res://documentation/balatro.jpg"
 
 [params]
 
