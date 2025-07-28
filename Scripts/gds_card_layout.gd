@@ -1,5 +1,7 @@
 extends Control
 
+@export var check_time := 0.6 # its probably better to + this with the animation time to offset this wait time.
+
 @export var grid_size = 5
 @export var grid_scale: float = 1
 @onready var player_save = PlayerVariables.save_file as PlayerSaveFile
@@ -19,7 +21,6 @@ var grid = preload("res://Scenes/Component/scn_card_grid.tscn").instantiate()
 var required_match = 0
 var matches = {}
 var currently_flipped_card = []
-var is_checking_match = false
 var match_card_type = ""
 @onready var mismatch_timer = $MismatchTimer
 @onready var match_timer = $MatchTimer
@@ -87,7 +88,7 @@ func _ready() -> void:
 
 # Logic when function selected
 func _on_card_selected(card_type: String, card_node: Node):
-	if is_checking_match or card_node.is_flipped_up: # check if card is on checking or flipped up
+	if GlobalVariables.is_checking_match or card_node.is_flipped_up: # check if card is on checking or flipped up
 		return
 	
 	# if the card that currently flipped up is empty
@@ -101,10 +102,10 @@ func _on_card_selected(card_type: String, card_node: Node):
 		
 		# if the card is not the same type 
 		if card_type != first_card_type: # give a pause and flip down the card
-			is_checking_match = true
+			GlobalVariables.is_checking_match = true
 			card_node.flip_up() # flip up the card
 			currently_flipped_card.append(card_node)
-			mismatch_timer.start(0.6) # flip down the card after pause time
+			mismatch_timer.start(check_time) # flip down the card after pause time
 			return
 		
 		card_node.flip_up() # flip up the card
@@ -112,12 +113,12 @@ func _on_card_selected(card_type: String, card_node: Node):
 	
 	# if the number of currently flipped up card equal to required match
 	if currently_flipped_card.size() == required_match: # check if the match card are succesfull
-		is_checking_match = true
+		GlobalVariables.is_checking_match = true
 		process_successfull_match(card_type, currently_flipped_card)
 		currently_flipped_card.clear() # clear the track of flipped up card
 		
 		required_match = 0 # reset the required match
-		is_checking_match = false
+		GlobalVariables.is_checking_match = false
 
 # process the succesfull match
 func process_successfull_match(card_type: String, matches_card: Array):
@@ -129,7 +130,7 @@ func process_successfull_match(card_type: String, matches_card: Array):
 	var current_card_size = matches[card_type].size()
 	if current_card_size >= required_pair:
 		match_card_type = card_type
-		match_timer.start(0.6)
+		match_timer.start(check_time)
 		pair_matched += 1 	
 
 # DENAR THIS IS YOUR JOB GO DO YOUR THING
@@ -171,7 +172,7 @@ func _on_timer_timeout() -> void:
 	
 	currently_flipped_card.clear()
 	required_match = 0
-	is_checking_match = false
+	GlobalVariables.is_checking_match = false
 
 
 func _on_match_timer_timeout() -> void:

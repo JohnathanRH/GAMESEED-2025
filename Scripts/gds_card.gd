@@ -18,8 +18,9 @@ func _ready() -> void:
 	$AnimationPlayer.speed_scale = GlobalVariables.card_anim_speed
 
 func _on_button_pressed():
-	$AnimationPlayer.play("flip_up")
-	emit_signal("card_selected", card_type, self)
+	if (!GlobalVariables.is_checking_match):
+		$AnimationPlayer.play("flip_up")
+		emit_signal("card_selected", card_type, self)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	pass
@@ -30,7 +31,6 @@ func flip_up():
 	is_flipped_up = true
 	self.disabled = true
 	$AnimationPlayer.play("flip_up")
-
 
 func flip_down():
 	if !is_flipped_up: return
