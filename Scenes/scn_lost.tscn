@@ -1,10 +1,39 @@
-[gd_scene format=3 uid="uid://cvvj42pd11bdn"]
+[gd_scene load_steps=2 format=3 uid="uid://cvvj42pd11bdn"]
+
+[ext_resource type="Script" uid="uid://w8ebnx8ooq6i" path="res://Scripts/gds_lost.gd" id="1_8e8jp"]
 
 [node name="scn_lost" type="Node2D"]
+script = ExtResource("1_8e8jp")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 149.0
-offset_top = 149.0
-offset_right = 522.0
-offset_bottom = 248.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BtnContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.5
+offset_top = -37.0
+offset_right = 121.5
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnRestart" type="Button" parent="CanvasLayer/BtnContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="BtnQuit" type="Button" parent="CanvasLayer/BtnContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 122.0
+offset_top = 18.0
+offset_right = 495.0
+offset_bottom = 117.0
 text = "You Lose"
+
+[connection signal="pressed" from="CanvasLayer/BtnContainer/BtnRestart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/BtnContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
