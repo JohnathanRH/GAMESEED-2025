@@ -8,6 +8,7 @@ extends Control
 var card2p = ["attack", "fireball"]
 var card3p = ["heal", "shield"]
 @export var deck = []
+var grid = preload("res://Scenes/Component/scn_card_grid.tscn").instantiate()
 
 ## 2x + 3y = grid_size*grid_size
 @export var x = 8 
@@ -23,6 +24,14 @@ var match_card_type = ""
 @onready var mismatch_timer = $MismatchTimer
 @onready var match_timer = $MatchTimer
 
+# keep track how many card matched
+var pair_matched: int = 0:
+	set(add_pair):
+		pair_matched = add_pair 
+		print("current matched pair: ", pair_matched)
+		if(pair_matched >= x+y):
+			grid.shuffle_children()
+
 # Enemy
 @export var enemy_resource: EnemyResource
 var current_enemy: EnemyResource
@@ -36,17 +45,17 @@ func add_card():
 		deck.append(card3p[j%card3p.size()])
 		deck.append(card3p[j%card3p.size()])
 		deck.append(card3p[j%card3p.size()])
-	
-	
+
 
 # shuffle card on the deck
 func shuffle_card():
 	add_card()
+	randomize()
 	deck.shuffle()
 
 func display_card():
 	card_layout.scale = Vector2(grid_scale, grid_scale)
-	var grid = preload("res://Scenes/Component/scn_card_grid.tscn").instantiate()
+	
 	grid.columns = grid_size
 	card_layout.add_child(grid)
 	
@@ -72,6 +81,7 @@ func _ready() -> void:
 	
 	shuffle_card()
 	display_card()
+	grid.shuffle_children()
 	
 
 
@@ -119,6 +129,7 @@ func process_successfull_match(card_type: String, matches_card: Array):
 	var current_card_size = matches[card_type].size()
 	if current_card_size >= required_pair:
 		match_card_type = card_type
+		pair_matched += 1 	
 		match_timer.start(1.2)
 
 # DENAR THIS IS YOUR JOB GO DO YOUR THING
@@ -139,7 +150,7 @@ func use_card(card_type: String):
 func damage_enemy(amount: int) -> void:
 	current_enemy.hp -= amount
 	print("Enemy takes %d damage. Remaining HP: %d" % [amount, current_enemy.hp])
-
+	enemy_resource.setHP(current_enemy.hp)
 	if current_enemy.hp <= 0:
 		print("Enemy died!")
 
@@ -152,6 +163,7 @@ func get_match_size(card_type: String) -> int:
 			return 3
 		_:
 			return 99
+	
 
 func _on_timer_timeout() -> void:
 	for card in currently_flipped_card:
