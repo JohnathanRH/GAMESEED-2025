@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://x5crmnjjp0ya"]
 
-[ext_resource type="Texture2D" uid="uid://d24od1l5ukc6j" path="res://asset (plz merge into the Asset folder)/enemy_icon.png" id="1_fxxpm"]
+[ext_resource type="Texture2D" uid="uid://d24od1l5ukc6j" path="res://asset (do not merge this yet)/enemy_icon.png" id="1_fxxpm"]
 
 [resource]
 animations = [{

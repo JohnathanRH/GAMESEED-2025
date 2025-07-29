@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_im46e")
 name = "Johnathan"
-hp = 85
+hp = 9999
 stage = "res://Scenes/Stages/scn_placeholder_stage.tscn"
 level = 1
 has_shield = false
