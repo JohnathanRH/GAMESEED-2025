@@ -27,6 +27,9 @@ func save_data() -> void:
 	print(save_file.hp)
 	ResourceSaver.save(save_file, save_path)
 
+func reset_data() -> void:
+	save_file = load_data()
+
 func set_save_path(new_save_path: String):
 	save_path = new_save_path
 	save_file = load_data()
