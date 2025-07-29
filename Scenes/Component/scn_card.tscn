@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dylts7gw1wu7p"]
+[gd_scene load_steps=11 format=3 uid="uid://dylts7gw1wu7p"]
 
 [ext_resource type="Texture2D" uid="uid://c8fb1h2br228v" path="res://Assets/Card/CardBack.png" id="1_v30y3"]
 [ext_resource type="Script" uid="uid://n0sak2hisn3k" path="res://Scripts/gds_card.gd" id="2_hscuo"]
@@ -54,6 +54,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_hscuo"]
@@ -160,11 +172,43 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_5xwnk"]
+resource_name = "hover_enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_ix4hd"]
+resource_name = "hover_exit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5xwnk"]
 _data = {
 &"RESET": SubResource("Animation_e5cf3"),
 &"flip_down": SubResource("Animation_hscuo"),
-&"flip_up": SubResource("Animation_vow2q")
+&"flip_up": SubResource("Animation_vow2q"),
+&"hover_enter": SubResource("Animation_5xwnk"),
+&"hover_exit": SubResource("Animation_ix4hd")
 }
 
 [node name="ScnCardPlaceholder" type="Button"]
@@ -173,6 +217,7 @@ offset_left = -10.0
 offset_top = -12.0
 offset_right = 10.0
 offset_bottom = 12.0
+pivot_offset = Vector2(1, 1)
 toggle_mode = true
 script = ExtResource("2_hscuo")
 
@@ -189,4 +234,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_5xwnk")
 }
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

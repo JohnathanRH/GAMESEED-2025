@@ -39,9 +39,18 @@ func flip_down():
 	self.disabled = false
 	$AnimationPlayer.play("flip_down")
 
-
 func set_as_matched():
 	self.disabled = true
 
 func update_anim_speed() -> void:
 	$AnimationPlayer.speed_scale = GlobalVariables.card_anim_speed
+
+
+func _on_mouse_entered() -> void:
+	if !is_flipped_up:
+		$AnimationPlayer.play("hover_enter")
+
+
+func _on_mouse_exited() -> void:
+	if !is_flipped_up:
+		$AnimationPlayer.play("hover_exit")
