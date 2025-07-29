@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_l03yp")
-name = "MMMMMMMMMAAA"
+name = "Guntur"
 hp = 10
 stage = "res://Scenes/Stages/scn_placeholder_stage.tscn"
 level = 0

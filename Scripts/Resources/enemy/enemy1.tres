@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_i7xmp")
 animation = ExtResource("1_tftdy")
-hp = 20
+hp = 10
 atk_interval = 1.5
 metadata/_custom_type_script = "uid://b7pkd4wj6qjtu"

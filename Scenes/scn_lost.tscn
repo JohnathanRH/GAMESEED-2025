@@ -22,7 +22,7 @@ grow_vertical = 2
 
 [node name="BtnRestart" type="Button" parent="CanvasLayer/BtnContainer"]
 layout_mode = 2
-text = "Start"
+text = "Restart"
 
 [node name="BtnQuit" type="Button" parent="CanvasLayer/BtnContainer"]
 layout_mode = 2
