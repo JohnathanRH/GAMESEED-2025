@@ -4,6 +4,7 @@ const SAVE_DIR = "res://Save Files/"
 const SAVE_EXT = ".tres"
 
 @onready var slot_container = $CanvasLayer/VBoxContainer
+@onready var playerVar = PlayerVariables.save_file as PlayerSaveFile
 var slot_scene = preload("res://Scenes/UI/scn_save_slot.tscn")
 var stage_path = ""
 
@@ -30,9 +31,10 @@ func _on_save_button_pressed(slot_number: int):
 	print("Button on save slot " + str(slot_number) + "pressed")
 	
 	var slot = slot_container.get_child(slot_number-1)
+	PlayerVariables.set_save_path(slot.save_path)
 	
 	if slot.is_empty:
 		get_tree().change_scene_to_file("res://Scenes/UI/scn_input_empty_save_slot.tscn")
-		PlayerVariables.set_save_path(slot.save_path)
+		
 	else:
-		get_tree().change_scene_to_file(stage_path)
+		get_tree().change_scene_to_file(playerVar.stage)

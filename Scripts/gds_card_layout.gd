@@ -7,8 +7,8 @@ extends Control
 @onready var player_save = PlayerVariables.save_file as PlayerSaveFile
 
 # Card Shuffle Variable
-var card2p = ["attack", "fireball"]
-var card3p = ["heal", "shield"]
+var card2p = ["attack", "fireball", "shield"]
+var card3p = ["heal"]
 @export var deck = []
 var grid = preload("res://Scenes/Component/scn_card_grid.tscn").instantiate()
 
@@ -80,6 +80,8 @@ func _ready() -> void:
 		print("Enemy HP: %d" % current_enemy.hp)
 		for i in deck:
 			print("this is are the deck : ", i)
+	
+	GlobalVariables.is_checking_match = false
 	
 	shuffle_card()
 	display_card()
@@ -158,9 +160,9 @@ func damage_enemy(amount: int) -> void:
 	
 func get_match_size(card_type: String) -> int:
 	match card_type:
-		"attack", "fireball":
+		"attack", "fireball", "shield":
 			return 2
-		"shield", "heal":
+		"heal":
 			return 3
 		_:
 			return 99
