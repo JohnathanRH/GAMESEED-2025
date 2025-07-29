@@ -60,7 +60,7 @@ func display_card():
 	
 	grid.columns = grid_size
 	card_layout.add_child(grid)
-	
+	GlobalVariables.card_grid = grid as GridContainer
 	
 	var it = 0;
 	var grid_pow = grid_size*grid_size

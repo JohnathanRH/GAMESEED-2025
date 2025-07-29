@@ -83,4 +83,5 @@ offset_top = 3.0
 offset_right = 77.0
 offset_bottom = 16.0
 
+[editable path="ScnCardLayout"]
 [editable path="CanvasLayer/scn_enemy_stats"]

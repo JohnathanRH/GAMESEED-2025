@@ -11,11 +11,9 @@ var card_symbol = {"attack":"res://Assets/Card/SymbolSword.png",
 signal card_selected(card_type: String, card_node: Node)
 
 func _ready() -> void:
-	GlobalVariables.cardAnimSpeedSet.connect(update_anim_speed)
 	self.pressed.connect(_on_button_pressed)
 	$Sprite2D2/Sprite2D.texture = load(card_symbol[card_type])
 	custom_minimum_size = Vector2(20,24) # Hard coded, this is the size of the card texture
-	$AnimationPlayer.speed_scale = GlobalVariables.card_anim_speed
 
 func _on_button_pressed():
 	if (!GlobalVariables.is_checking_match):
@@ -41,9 +39,6 @@ func flip_down():
 
 func set_as_matched():
 	self.disabled = true
-
-func update_anim_speed() -> void:
-	$AnimationPlayer.speed_scale = GlobalVariables.card_anim_speed
 
 
 func _on_mouse_entered() -> void:
