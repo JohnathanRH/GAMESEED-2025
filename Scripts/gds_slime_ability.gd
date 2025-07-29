@@ -21,7 +21,6 @@ func _on_cast_ability_timeout() -> void:
 		selected_card.disabled = true
 		selected_card.modulate = Color.CHARTREUSE
 		affected_cards.append(selected_card)
-		print(affected_cards)
 	
 	# randomize the next ability wait time
 	$cast_ability.wait_time = randi_range(from, to)

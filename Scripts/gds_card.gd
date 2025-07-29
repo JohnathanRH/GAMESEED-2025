@@ -40,12 +40,10 @@ func flip_down():
 func set_as_matched():
 	self.disabled = true
 
-
 func _on_mouse_entered() -> void:
 	if !is_flipped_up:
-		$AnimationPlayer.play("hover_enter")
-
+		$HoverAnimPlayer.play("hover_enter")
 
 func _on_mouse_exited() -> void:
 	if !is_flipped_up:
-		$AnimationPlayer.play("hover_exit")
+		$HoverAnimPlayer.play("hover_exit")
