@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dylts7gw1wu7p"]
+[gd_scene load_steps=12 format=3 uid="uid://dylts7gw1wu7p"]
 
 [ext_resource type="Texture2D" uid="uid://c8fb1h2br228v" path="res://Assets/Card/CardBack.png" id="1_v30y3"]
 [ext_resource type="Script" uid="uid://n0sak2hisn3k" path="res://Scripts/gds_card.gd" id="2_hscuo"]
 [ext_resource type="Texture2D" uid="uid://c7j2y68dxkie8" path="res://Assets/Card/SymbolFire.png" id="3_hscuo"]
 [ext_resource type="Texture2D" uid="uid://cpsulctoa7imi" path="res://Assets/Card/CardFront.png" id="3_vow2q"]
+[ext_resource type="Animation" uid="uid://g1g5uklocd8" path="res://Assets/Animation/hover_enter.res" id="5_e5cf3"]
+[ext_resource type="Animation" uid="uid://bjtuqjgvmre2m" path="res://Assets/Animation/hover_exit.res" id="6_5xwnk"]
 
 [sub_resource type="Animation" id="Animation_e5cf3"]
 length = 0.001
@@ -172,43 +174,17 @@ tracks/3/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_5xwnk"]
-resource_name = "hover_enter"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.733333),
-"transitions": PackedFloat32Array(0.217638, 2.63902),
-"update": 0,
-"values": [Vector2(10, 12), Vector2(12, 10)]
-}
-
-[sub_resource type="Animation" id="Animation_ix4hd"]
-resource_name = "hover_exit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.68),
-"transitions": PackedFloat32Array(0.183011, 3.73213),
-"update": 0,
-"values": [Vector2(12, 10), Vector2(10, 12)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5xwnk"]
 _data = {
 &"RESET": SubResource("Animation_e5cf3"),
 &"flip_down": SubResource("Animation_hscuo"),
-&"flip_up": SubResource("Animation_vow2q"),
-&"hover_enter": SubResource("Animation_5xwnk"),
-&"hover_exit": SubResource("Animation_ix4hd")
+&"flip_up": SubResource("Animation_vow2q")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ix4hd"]
+_data = {
+&"hover_enter": ExtResource("5_e5cf3"),
+&"hover_exit": ExtResource("6_5xwnk")
 }
 
 [node name="ScnCardPlaceholder" type="Button"]
@@ -233,6 +209,11 @@ texture = ExtResource("3_hscuo")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_5xwnk")
+}
+
+[node name="HoverAnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ix4hd")
 }
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -4,13 +4,11 @@
 
 [node name="slime_ability" type="Node"]
 script = ExtResource("1_natqd")
-from = 5
-to = 10
-scale = 0.5
+from = 6
+to = 15
 
 [node name="cast_ability" type="Timer" parent="."]
 wait_time = 5.0
-one_shot = true
 autostart = true
 
 [node name="ability_duration" type="Timer" parent="."]
