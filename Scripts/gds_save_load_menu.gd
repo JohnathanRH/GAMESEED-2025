@@ -6,6 +6,7 @@ const SAVE_EXT = ".tres"
 @onready var slot_container = $CanvasLayer/VBoxContainer
 @onready var playerVar = PlayerVariables.save_file as PlayerSaveFile
 var slot_scene = preload("res://Scenes/UI/scn_save_slot.tscn")
+var delete_scene = preload("res://Scenes/UI/scn_delete_save.tscn")
 
 func _ready() -> void:
 	
@@ -13,28 +14,17 @@ func _ready() -> void:
 		var slot_path = SAVE_DIR + "slot_" + str(i) + SAVE_EXT
 		#var slot_path = "res://Save Files/player_save_file.tres"
 		var slot_instance = slot_scene.instantiate()
-		
-		slot_instance.pressed.connect(_on_save_button_pressed.bind(i))
+		var delete_instance = delete_scene.instantiate()
 		
 		if FileAccess.file_exists(slot_path):
 			var save_data: PlayerSaveFile = ResourceLoader.load(slot_path)
 			slot_instance.setup(save_data, slot_path)
+			delete_instance.setup(slot_path)
 		else:
 			slot_instance.empty_setup(slot_path)
-		slot_container.add_child(slot_instance)
-	
-	pass
-
-func _on_save_button_pressed(slot_number: int):
-	print("Button on save slot " + str(slot_number) + "pressed")
-	
-	var slot = slot_container.get_child(slot_number-1)
-	PlayerVariables.set_save_path(slot.save_path)
-	
-	playerVar = PlayerVariables.save_file
-	
-	if slot.is_empty:
-		get_tree().change_scene_to_file("res://Scenes/UI/scn_input_empty_save_slot.tscn")
+			delete_instance.empty_setup()
 		
-	else:
-		get_tree().change_scene_to_file(playerVar.stage)
+		slot_container.add_child(slot_instance)
+		slot_container.add_child(delete_instance)
+
+# save button funcitonality moved to the button scene itself
