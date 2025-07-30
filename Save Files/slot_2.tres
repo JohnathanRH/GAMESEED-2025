@@ -4,8 +4,14 @@
 
 [resource]
 script = ExtResource("1_e2wwu")
+<<<<<<< HEAD
 name = "Jonathan"
 hp = 10
 stage = "res://Scenes/Stages/scn_placeholder_stage.tscn"
+=======
+name = ""
+hp = 10
+stage = "res://Scenes/Stages/scn_stage_1.tscn"
+>>>>>>> abbe2ab29498f5febad4bc7067fef72c0397ab2f
 level = 0
 has_shield = false

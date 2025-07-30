@@ -8,4 +8,4 @@ func _on_btn_quit_pressed() -> void:
 
 func _on_btn_restart_pressed() -> void:
 	PlayerVariables.reset_data()
-	get_tree().change_scene_to_file("res://Scenes/Stages/scn_placeholder_stage.tscn")
+	get_tree().change_scene_to_file(player.stage)
