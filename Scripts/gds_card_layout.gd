@@ -1,6 +1,6 @@
 extends Control
 
-@export var check_time := 0.6 # its probably better to + this with the animation time to offset this wait time.
+@export var check_time := 0.2 # its probably better to + this with the animation time to offset this wait time.
 
 @export var grid_size = 5
 @export var grid_scale: float = 1
@@ -13,8 +13,8 @@ var card3p = ["heal"]
 var grid = preload("res://Scenes/Component/scn_card_grid.tscn").instantiate()
 
 ## 2x + 3y = grid_size*grid_size
-@export var x = 8 
-@export var y = 3
+@export var x = 11
+@export var y = 1
 @onready var card_layout = $VBoxContainer
 
 # Card Matching Variable
@@ -40,9 +40,15 @@ var pair_matched: int = 0:
 
 # Add card into deck
 func add_card():
-	for i in range(x):
-		deck.append(card2p[i%card2p.size()])
-		deck.append(card2p[i%card2p.size()])
+	for type in card2p:
+		if(type == "shield"):
+			for i in range(3):
+				deck.append(type)
+				deck.append(type)
+		else:
+			for i in range(4):
+				deck.append(type)
+				deck.append(type)
 	for j in range(y):
 		deck.append(card3p[j%card3p.size()])
 		deck.append(card3p[j%card3p.size()])

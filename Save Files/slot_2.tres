@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="PlayerSaveFile" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Save Files/player_save_file.gd" id="1_l03yp"]
+[ext_resource type="Script" path="res://Save Files/player_save_file.gd" id="1_e2wwu"]
 
 [resource]
-script = ExtResource("1_l03yp")
-name = "Jonathan"
+script = ExtResource("1_e2wwu")
+name = ""
 hp = 10
 stage = "res://Scenes/Stages/scn_stage_1.tscn"
 level = 0
