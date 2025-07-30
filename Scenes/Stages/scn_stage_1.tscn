@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ci7bp1it87y3"]
+[gd_scene load_steps=9 format=3 uid="uid://cact3jh83mwqp"]
 
 [ext_resource type="PackedScene" uid="uid://fhjuspelnwbg" path="res://Scenes/UI/scn_card_layout.tscn" id="1_dgtbf"]
 [ext_resource type="Resource" uid="uid://i613t5c2g4x1" path="res://Scripts/Resources/enemy/enemy1.tres" id="2_yfck2"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cllomvcvemhhe" path="res://Scenes/scn_enemy.tscn" id="4_a64lw"]
 [ext_resource type="PackedScene" uid="uid://y10hu4m1b52t" path="res://Scenes/Component/stats_placeholder.tscn" id="5_yhsin"]
 [ext_resource type="PackedScene" uid="uid://cx2ba2pdnkx63" path="res://Scenes/Component/scn_enemy_stats.tscn" id="6_d681f"]
-[ext_resource type="PackedScene" uid="uid://jae2auaur8bf" path="res://Scenes/Component/scn_player_hp.tscn" id="7_d681f"]
+[ext_resource type="PackedScene" path="res://Scenes/Component/scn_player_hp.tscn" id="7_d681f"]
 [ext_resource type="PackedScene" uid="uid://dhkwfv6ve430s" path="res://Scenes/UI/scn_pause_menu.tscn" id="7_tt125"]
 
 [node name="ScnStage1" type="Node2D"]
