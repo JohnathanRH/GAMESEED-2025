@@ -1,7 +1,7 @@
 extends Sprite2D
 @onready var anim_player = $AnimationPlayer
 @onready var player_save = PlayerVariables.save_file as PlayerSaveFile
-@onready var hp_bar = $"../CanvasLayer/scn_player_hp/TextureProgressBar"
+@onready var hp_bar = $"../../CanvasLayer/scn_player_hp/TextureProgressBar"
 
 func _input(event: InputEvent) -> void:
 	# Save, for debugging only

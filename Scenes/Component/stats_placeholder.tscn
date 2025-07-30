@@ -15,7 +15,6 @@ text = "Lorem"
 metadata/_edit_use_anchors_ = true
 
 [node name="hp" type="Label" parent="."]
-anchors_preset = -1
 offset_left = 36.0
 offset_top = 136.0
 offset_right = 58.0
