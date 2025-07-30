@@ -1,8 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://cceb780wdmjgn"]
+[gd_scene load_steps=6 format=3 uid="uid://cceb780wdmjgn"]
 
 [ext_resource type="Texture2D" uid="uid://r85ln5y2abxn" path="res://Assets/Entity/CharPlayer.png" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://db040f5j28gxd" path="res://Scripts/gds_player.gd" id="2_x8wep"]
 
+[sub_resource type="Animation" id="Animation_fxdt3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vt8q2"]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(43, 116), Vector2(45.5, 116), Vector2(40.5, 116), Vector2(44.25, 116), Vector2(43, 116)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_us23w"]
+_data = {
+&"RESET": SubResource("Animation_fxdt3"),
+&"hurt": SubResource("Animation_vt8q2")
+}
+
 [node name="player" type="Sprite2D"]
 texture = ExtResource("1_cvnsp")
 script = ExtResource("2_x8wep")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_us23w")
+}
