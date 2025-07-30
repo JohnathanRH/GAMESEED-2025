@@ -15,4 +15,9 @@ autostart = true
 
 [node name="slime_ability" parent="." instance=ExtResource("4_q7rjw")]
 
+[node name="orb_timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="orb_timer" to="." method="_on_orb_timer_timeout"]

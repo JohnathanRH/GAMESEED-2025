@@ -1,24 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://cx2ba2pdnkx63"]
+[gd_scene load_steps=6 format=3 uid="uid://cx2ba2pdnkx63"]
 
-[ext_resource type="Texture2D" uid="uid://clb4flc3ah5op" path="res://Assets/Placeholder/progress_white.png" id="1_u4w5w"]
-[ext_resource type="Texture2D" uid="uid://b3ggh75iu65u8" path="res://Assets/Placeholder/progress_outline.png" id="2_rf0ix"]
-[ext_resource type="Texture2D" uid="uid://cljcuvrwogvn4" path="res://Assets/Placeholder/progress_red.png" id="3_b56kh"]
+[ext_resource type="Texture2D" uid="uid://br44embx7joe0" path="res://Assets/Bar/ActionBar_Under.png" id="1_u4w5w"]
+[ext_resource type="Texture2D" uid="uid://iontfqkh6w60" path="res://Assets/Bar/ActionBar_Over.png" id="2_rf0ix"]
+[ext_resource type="Texture2D" uid="uid://cidnuv0cf0fll" path="res://Assets/Bar/ActionBar_Progress.png" id="3_b56kh"]
+[ext_resource type="Texture2D" uid="uid://lul86jbsba0g" path="res://Assets/Bar/Intent_Under.png" id="4_b56kh"]
+[ext_resource type="Texture2D" uid="uid://dplwlvkqqaydt" path="res://Assets/Bar/Intent_Progress.png" id="5_mv8cm"]
 
 [node name="scn_enemy_stats" type="Node"]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 80.0
-offset_top = 7.0
-offset_right = 104.0
-offset_bottom = 13.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.0
+offset_top = 6.0
+offset_right = 73.0
+offset_bottom = 17.0
+grow_horizontal = 2
 max_value = 1.0
 value = 1.0
-fill_mode = 1
 texture_under = ExtResource("1_u4w5w")
 texture_over = ExtResource("2_rf0ix")
 texture_progress = ExtResource("3_b56kh")
 
 [node name="hp_bar" type="Label" parent="."]
-offset_right = 72.0
-offset_bottom = 13.0
-text = "Enemy HP: xy"
+offset_left = 255.0
+offset_top = 136.0
+offset_right = 271.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "xy"
+horizontal_alignment = 1
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
+offset_left = 227.0
+offset_top = 1.0
+offset_right = 248.0
+offset_bottom = 25.0
+max_value = 1.0
+fill_mode = 3
+texture_under = ExtResource("4_b56kh")
+texture_progress = ExtResource("5_mv8cm")
