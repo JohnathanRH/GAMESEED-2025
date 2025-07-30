@@ -135,7 +135,6 @@ func process_successfull_match(card_type: String, matches_card: Array):
 	if not matches.has(card_type):
 		matches[card_type] = []
 	matches[card_type].append_array(matches_card)
-	print(matches)
 	var required_pair = get_match_size(card_type)
 	var current_card_size = matches[card_type].size()
 	if current_card_size >= required_pair:
