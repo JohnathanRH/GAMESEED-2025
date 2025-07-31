@@ -22,6 +22,8 @@ var required_match = 0
 var matches = {}
 var currently_flipped_card = []
 var match_card_type = ""
+var matched_card = []
+var matched_card_type = []
 @onready var mismatch_timer = $MismatchTimer
 @onready var match_timer = $MatchTimer
 
@@ -35,8 +37,8 @@ var pair_matched: int = 0:
 		pair_matched = add_pair 
 		print("current matched pair: ", pair_matched)
 		if(pair_matched >= x+y):
-			grid.shuffle_children()
-			pair_matched = 1
+			$ShuffleTimer.start(check_time*2)
+			
 
 # Add card into deck
 func add_card():
@@ -138,6 +140,11 @@ func process_successfull_match(card_type: String, matches_card: Array):
 		match_card_type = card_type
 		match_timer.start(check_time)
 		pair_matched += 1
+		for card in matches[card_type]:
+			matched_card.append(card)
+			matches.erase(match_card_type)
+		matched_card_type.append(match_card_type)
+		match_card_type = ""	
 
 # DENAR THIS IS YOUR JOB GO DO YOUR THING
 func use_card(card_type: String):
@@ -151,8 +158,11 @@ func use_card(card_type: String):
 			print("Used Shield")
 		"heal":
 			player_save.setHp(player_save.hp + 2) # Heals 2 hp
+			print(player_save.hp) # debugging
 			if player_save.hp >= 10:
+				player_save.hp = 10
 				player_save.setHp(10)
+				print(player_save.hp) # debugging
 		_:
 			return 99
 
@@ -184,12 +194,19 @@ func _on_timer_timeout() -> void:
 
 
 func _on_match_timer_timeout() -> void:
-		use_card(match_card_type)
-		for card in matches[match_card_type]:
+		for card_type in matched_card_type:
+			use_card(card_type)
+		matched_card_type.clear()
+		for card in matched_card:
 			card.modulate.a = 0
 			card.disabled = true
 			card.flip_down()
 			var find_card = GlobalVariables.available_cards.find(card)
 			GlobalVariables.available_cards.pop_at(find_card)
-		matches.erase(match_card_type)
-		match_card_type = ""	
+		matched_card.clear()
+		
+
+
+func _on_shuffle_timer_timeout() -> void:
+	grid.shuffle_children()
+	pair_matched = 1

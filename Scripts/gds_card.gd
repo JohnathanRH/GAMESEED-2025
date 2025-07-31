@@ -2,6 +2,7 @@ extends Button
 
 @export var card_type: String = ""
 @export var is_flipped_up = false
+var is_sticky = false
 
 var card_symbol = {"attack":"res://Assets/Card/SymbolSword.png", 
 					"fireball":"res://Assets/Card/SymbolFire.png", 
@@ -30,15 +31,18 @@ func flip_up():
 	self.disabled = true
 	$HoverAnimPlayer.play("hover_exit")
 	$AnimationPlayer.play("flip_up")
-	print("flip up")
+	#print("flip up")
 
 func flip_down():
 	if !is_flipped_up: return
 	$card_flip_audio.play()
 	is_flipped_up = false
-	self.disabled = false
+	if is_sticky:
+		self.disabled = true
+	else:
+		self.disabled = false
 	$AnimationPlayer.play("flip_down")
-	print("flip down")
+	#print("flip down")
 	
 	
 func set_as_matched():
