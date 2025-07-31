@@ -18,5 +18,5 @@ func shuffle_children():
 		add_child(child)
 		move_child(child, -1)
 		GlobalVariables.available_cards.append(child)
-		print("append ", child, " into global var")
+		print("append ", child, " into global var", GlobalVariables.available_cards.size())
 	pass
