@@ -30,6 +30,7 @@ func flip_up():
 	self.disabled = true
 	$HoverAnimPlayer.play("hover_exit")
 	$AnimationPlayer.play("flip_up")
+	print("flip up")
 
 func flip_down():
 	if !is_flipped_up: return
@@ -37,6 +38,7 @@ func flip_down():
 	is_flipped_up = false
 	self.disabled = false
 	$AnimationPlayer.play("flip_down")
+	print("flip down")
 	
 	
 func set_as_matched():

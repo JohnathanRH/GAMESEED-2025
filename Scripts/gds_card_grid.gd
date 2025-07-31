@@ -4,7 +4,6 @@ extends GridContainer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
-	shuffle_children()
 
 func shuffle_children():
 	
@@ -18,4 +17,6 @@ func shuffle_children():
 		remove_child(child)
 		add_child(child)
 		move_child(child, -1)
+		GlobalVariables.available_cards.append(child)
+		print("append ", child, " into global var")
 	pass

@@ -12,7 +12,7 @@ var intent_icon : Sprite2D
 
 func _ready() -> void:
 	# Enter the data stored in the EnemyResource into whatever requires it
-	
+	randomize()
 	$Timer.wait_time = enemy_resource.atk_interval
 	atk_bar = enemy_stat.get_child(0)
 	hp_label = enemy_stat.get_child(1)
@@ -62,4 +62,4 @@ func _on_timer_timeout() -> void:
 
 func _on_orb_timer_timeout() -> void:
 	atk_orb.value = 0
-	intent_icon.visible = false
+	#intent_icon.visible = false
