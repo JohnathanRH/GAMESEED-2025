@@ -56,7 +56,6 @@ func _on_timer_timeout() -> void:
 
 func _on_orb_timer_timeout() -> void:
 	atk_orb.value = 1
-	print("the choice are ", enemy_atk)
 	match enemy_atk:
 		0:
 			if player_save.has_shield:
