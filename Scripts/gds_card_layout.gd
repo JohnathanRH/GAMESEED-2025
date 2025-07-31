@@ -36,7 +36,7 @@ var pair_matched: int = 0:
 		print("current matched pair: ", pair_matched)
 		if(pair_matched >= x+y):
 			grid.shuffle_children()
-			pair_matched = 0
+			pair_matched = 1
 
 # Add card into deck
 func add_card():
@@ -66,7 +66,6 @@ func display_card():
 	
 	grid.columns = grid_size
 	card_layout.add_child(grid)
-	GlobalVariables.card_grid = grid as GridContainer
 	
 	var it = 0;
 	var grid_pow = grid_size*grid_size
@@ -133,13 +132,12 @@ func process_successfull_match(card_type: String, matches_card: Array):
 	if not matches.has(card_type):
 		matches[card_type] = []
 	matches[card_type].append_array(matches_card)
-	
 	var required_pair = get_match_size(card_type)
 	var current_card_size = matches[card_type].size()
 	if current_card_size >= required_pair:
 		match_card_type = card_type
 		match_timer.start(check_time)
-		pair_matched += 1 	
+		pair_matched += 1
 
 # DENAR THIS IS YOUR JOB GO DO YOUR THING
 func use_card(card_type: String):
@@ -189,5 +187,7 @@ func _on_match_timer_timeout() -> void:
 			card.modulate.a = 0
 			card.disabled = true
 			card.flip_down()
+			var find_card = GlobalVariables.available_cards.find(card)
+			GlobalVariables.available_cards.pop_at(find_card)
 		matches.erase(match_card_type)
 		match_card_type = ""	

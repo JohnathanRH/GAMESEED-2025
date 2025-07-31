@@ -17,7 +17,6 @@ scale = Vector2(613.75, 341.75)
 texture = SubResource("PlaceholderTexture2D_d5k1m")
 
 [node name="player" parent="." instance=ExtResource("2_i5dm6")]
-position = Vector2(190, 100)
 
 [node name="Label" type="Label" parent="."]
 visible = false

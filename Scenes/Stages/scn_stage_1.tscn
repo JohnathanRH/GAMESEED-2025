@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ci7bp1it87y3"]
+[gd_scene load_steps=9 format=3 uid="uid://cact3jh83mwqp"]
 
 [ext_resource type="PackedScene" uid="uid://fhjuspelnwbg" path="res://Scenes/UI/scn_card_layout.tscn" id="1_dgtbf"]
 [ext_resource type="Resource" uid="uid://i613t5c2g4x1" path="res://Scripts/Resources/enemy/enemy1.tres" id="2_yfck2"]
@@ -47,12 +47,12 @@ _data = {
 
 [node name="ScnStage1" type="Node2D"]
 
-[node name="Panel" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="Panel"]
+[node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 320.0
 offset_bottom = 180.0
 metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="CanvasLayer" parent="."]
 
 [node name="ScnCardLayout" parent="Panel" instance=ExtResource("1_dgtbf")]
 offset_left = -160.0
@@ -68,26 +68,23 @@ anchor_top = 0.505556
 anchor_bottom = 0.505556
 metadata/_edit_use_anchors_ = true
 
-[node name="player" parent="Panel" instance=ExtResource("3_ufalu")]
-position = Vector2(0, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/player"]
-libraries = {
-&"": SubResource("AnimationLibrary_us23w")
-}
-
-[node name="enemy" parent="Panel" instance=ExtResource("4_a64lw")]
-position = Vector2(263, 112)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Panel"]
-
-[node name="stats_placeholder" parent="Panel/CanvasLayer" instance=ExtResource("5_yhsin")]
-
-[node name="scn_enemy_stats" parent="Panel/CanvasLayer" instance=ExtResource("6_d681f")]
-
-[node name="scn_player_hp" parent="Panel/CanvasLayer" instance=ExtResource("7_d681f")]
-
 [node name="ScnPauseMenu" parent="Panel" instance=ExtResource("7_tt125")]
 visible = false
+
+[node name="enemy" parent="." instance=ExtResource("4_a64lw")]
+position = Vector2(263, 112)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="stats_placeholder" parent="CanvasLayer" instance=ExtResource("5_yhsin")]
+
+[node name="scn_enemy_stats" parent="CanvasLayer" instance=ExtResource("6_d681f")]
+
+[node name="scn_player_hp" parent="CanvasLayer" instance=ExtResource("7_d681f")]
+
+[node name="Container" type="Node2D" parent="."]
+position = Vector2(44, 111)
+
+[node name="player" parent="Container" instance=ExtResource("3_ufalu")]
 
 [editable path="Panel/ScnCardLayout"]

@@ -32,7 +32,6 @@ offset_bottom = -15.0
 color = Color(0.333551, 0.754568, 0.838473, 1)
 
 [node name="player" parent="." instance=ExtResource("5_tof3l")]
-position = Vector2(-117, -41)
 
 [node name="enemy" parent="." instance=ExtResource("6_7tse1")]
 position = Vector2(-55, -42)
@@ -54,12 +53,6 @@ offset_left = 98.0
 offset_top = 9.0
 offset_right = 122.0
 offset_bottom = 15.0
-
-[node name="hp_bar" parent="CanvasLayer/scn_enemy_stats" index="1"]
-offset_left = 5.0
-offset_top = 3.0
-offset_right = 77.0
-offset_bottom = 16.0
 
 [editable path="ScnCardLayout"]
 [editable path="CanvasLayer/scn_enemy_stats"]

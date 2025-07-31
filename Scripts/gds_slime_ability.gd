@@ -1,30 +1,29 @@
 extends Node
+class_name SlimeAbility
 
 @export var from : int
 @export var to : int
 @export var amount := 4
 
-@onready var card_count = GlobalVariables.card_grid.get_child_count()
-@onready var cards = GlobalVariables.card_grid.get_children() as Array[Button]
+@onready var card_count : int
 
 var rng = RandomNumberGenerator.new()
 var affected_cards : Array[Button]
 
-func _ready() -> void:
-	$cast_ability.wait_time = randi_range(from, to)
-
-func _on_cast_ability_timeout() -> void:
+func cast_ability() -> void:
+	# Reset the affected card (This is a funny way to do it lmao)
+	$ability_duration.timeout.emit()
+	
 	# perform the ability
+	card_count = GlobalVariables.available_cards.size()
+	
 	for i in amount:
 		var random_idx = rng.randi_range(0, card_count-1)
-		var selected_card = cards[random_idx]
+		var selected_card = GlobalVariables.available_cards[random_idx]
 		selected_card.disabled = true
 		selected_card.modulate = Color.CHARTREUSE
 		affected_cards.append(selected_card)
-		print(affected_cards)
 	
-	# randomize the next ability wait time
-	$cast_ability.wait_time = randi_range(from, to)
 	$ability_duration.start()
 
 
