@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cllomvcvemhhe"]
+[gd_scene load_steps=6 format=3 uid="uid://cllomvcvemhhe"]
 
 [ext_resource type="Texture2D" uid="uid://cukxclb2d5koo" path="res://Assets/Entity/EnemySlime.png" id="1_afpow"]
 [ext_resource type="Script" uid="uid://cv2g2c3f1fhr5" path="res://Scripts/gds_enemy.gd" id="2_8u16h"]
 [ext_resource type="Resource" uid="uid://i613t5c2g4x1" path="res://Scripts/Resources/enemy/enemy1.tres" id="2_f87vc"]
 [ext_resource type="PackedScene" uid="uid://bbjfj2yxy4ls1" path="res://Scenes/Component/scn_slime_ability.tscn" id="4_q7rjw"]
+[ext_resource type="AudioStream" uid="uid://bpe0c0m34mct3" path="res://Assets/Audio/Attack_Sound1.mp3" id="5_6gr4k"]
 
 [node name="enemy" type="Sprite2D"]
 texture = ExtResource("1_afpow")
@@ -18,6 +19,10 @@ autostart = true
 [node name="orb_timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="attack_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_6gr4k")
+volume_db = 1.5
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="orb_timer" to="." method="_on_orb_timer_timeout"]

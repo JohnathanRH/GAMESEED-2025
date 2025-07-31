@@ -151,6 +151,7 @@ func use_card(card_type: String):
 	match card_type:
 		"attack":
 			damage_enemy(1) # Deals 2 damage
+			$attack_audio.play()
 		"fireball":
 			damage_enemy(2) # Deals 1 damage
 		"shield": 
@@ -161,7 +162,7 @@ func use_card(card_type: String):
 			print(player_save.hp) # debugging
 			if player_save.hp >= 10:
 				player_save.hp = 10
-				player_save.setHp(10)
+				player_save.setHp(player_save.hp)
 				print(player_save.hp) # debugging
 		_:
 			return 99
