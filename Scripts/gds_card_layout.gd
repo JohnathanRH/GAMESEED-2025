@@ -158,8 +158,11 @@ func use_card(card_type: String):
 			print("Used Shield")
 		"heal":
 			player_save.setHp(player_save.hp + 2) # Heals 2 hp
+			print(player_save.hp) # debugging
 			if player_save.hp >= 10:
+				player_save.hp = 10
 				player_save.setHp(10)
+				print(player_save.hp) # debugging
 		_:
 			return 99
 
