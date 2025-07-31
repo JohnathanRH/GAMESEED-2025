@@ -17,11 +17,10 @@ func cast_ability() -> void:
 	# exclude currently flipped cards or cards that have already been matched
 	var cards = GlobalVariables.card_grid.get_children().duplicate() as Array[Button]
 	
-	for card in GlobalVariables.card_grid.get_children():
+	for card in cards:
 		if(card.is_flipped_up or card.has_matched):
 			print("Popped a card: " + str(card))
-			var find_card = cards.find(card)
-			cards.pop_at(find_card)
+			cards.erase(card)
 	
 	# perform the ability
 	card_count = cards.size()
@@ -36,7 +35,6 @@ func cast_ability() -> void:
 		affected_cards.append(selected_card)
 	
 	$ability_duration.start()
-
 
 func _on_ability_duration_timeout() -> void:
 	# return to normal

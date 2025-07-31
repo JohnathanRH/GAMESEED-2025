@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://boj7lynpl58t5"]
+
+[ext_resource type="Script" uid="uid://dabcguqucchqd" path="res://Scripts/gds_stage_1.gd" id="1_jov08"]
+[ext_resource type="PackedScene" uid="uid://fhjuspelnwbg" path="res://Scenes/UI/scn_card_layout.tscn" id="2_gsp3o"]
+[ext_resource type="PackedScene" uid="uid://dhkwfv6ve430s" path="res://Scenes/UI/scn_pause_menu.tscn" id="4_acmjb"]
+[ext_resource type="PackedScene" uid="uid://y10hu4m1b52t" path="res://Scenes/Component/stats_placeholder.tscn" id="6_15eir"]
+[ext_resource type="PackedScene" uid="uid://cx2ba2pdnkx63" path="res://Scenes/Component/scn_enemy_stats.tscn" id="7_1ioiu"]
+[ext_resource type="PackedScene" uid="uid://jae2auaur8bf" path="res://Scenes/Component/scn_player_hp.tscn" id="8_dcmmp"]
+[ext_resource type="PackedScene" uid="uid://dlxe4td228wop" path="res://Scenes/scn_enemy2.tscn" id="9_jov08"]
+[ext_resource type="PackedScene" uid="uid://cceb780wdmjgn" path="res://Scenes/scn_player.tscn" id="9_q5b04"]
+
+[node name="ScnStage2" type="Node2D"]
+script = ExtResource("1_jov08")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="CanvasLayer" parent="."]
+
+[node name="ScnCardLayout" parent="Panel" instance=ExtResource("2_gsp3o")]
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" parent="Panel/ScnCardLayout" index="0"]
+anchors_preset = -1
+anchor_top = 0.505556
+anchor_bottom = 0.505556
+metadata/_edit_use_anchors_ = true
+
+[node name="ScnPauseMenu" parent="Panel" instance=ExtResource("4_acmjb")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="stats_placeholder" parent="CanvasLayer" instance=ExtResource("6_15eir")]
+
+[node name="scn_enemy_stats" parent="CanvasLayer" instance=ExtResource("7_1ioiu")]
+
+[node name="scn_player_hp" parent="CanvasLayer" instance=ExtResource("8_dcmmp")]
+
+[node name="Container" type="Node2D" parent="."]
+position = Vector2(44, 111)
+
+[node name="player" parent="Container" instance=ExtResource("9_q5b04")]
+
+[node name="enemy" parent="." instance=ExtResource("9_jov08")]
+position = Vector2(263, 112)
+
+[editable path="Panel/ScnCardLayout"]

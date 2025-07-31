@@ -33,6 +33,11 @@ window/stretch/scale_mode="integer"
 
 project/assembly_name="OldButNew"
 
+[global_group]
+
+enemy="An identifier for enemy entities"
+"enemy stats ui"="An identifier for the enemy stats User Interface"
+
 [gui]
 
 theme/custom_font="uid://bjq6c5ckmc1xc"
