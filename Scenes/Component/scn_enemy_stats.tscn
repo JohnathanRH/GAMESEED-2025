@@ -58,6 +58,5 @@ texture_over = ExtResource("7_68jtb")
 texture_progress = ExtResource("8_mi71j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(238, 11)
 texture = ExtResource("9_68jtb")

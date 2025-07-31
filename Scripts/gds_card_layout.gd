@@ -36,7 +36,7 @@ var pair_matched: int = 0:
 		print("current matched pair: ", pair_matched)
 		if(pair_matched >= x+y):
 			grid.shuffle_children()
-			pair_matched = 0
+			pair_matched = 1
 
 # Add card into deck
 func add_card():
@@ -75,9 +75,6 @@ func display_card():
 		var addCard = preload("res://Scenes/Component/scn_card.tscn").instantiate()
 		addCard.card_type = type
 		addCard.card_selected.connect(_on_card_selected)
-		
-		GlobalVariables.available_cards.append(addCard) # Keep track of available cards
-		
 		grid.add_child(addCard)
 		it += 1
 
