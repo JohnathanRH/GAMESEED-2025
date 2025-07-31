@@ -8,12 +8,14 @@ var atk_orb : TextureProgressBar
 var hp_bar: TextureProgressBar
 var hp_label : Label
 var intent_icon : Sprite2D
+var enemy_atk: int
 @onready var enemy_hp = enemy_resource.hp
 
 func _ready() -> void:
 	# Enter the data stored in the EnemyResource into whatever requires it
 	randomize()
 	$Timer.wait_time = enemy_resource.atk_interval
+	$orb_timer.wait_time = $Timer.wait_time - 0.1
 	atk_bar = enemy_stat.get_child(0)
 	hp_label = enemy_stat.get_child(1)
 	atk_orb = enemy_stat.get_child(2)
@@ -32,13 +34,31 @@ func _process(delta: float) -> void:
 		get_tree().change_scene_to_file("res://Scenes/scn_win.tscn")
 
 func _on_timer_timeout() -> void:
-	atk_orb.value = 1
+	atk_orb.value = 0
 	$orb_timer.start()
-	var enemy_atk = randi_range(0, 2)
+	enemy_atk = randi_range(0, 2)
+	#print("the choice are ", enemy_atk)
 	match enemy_atk:
 		# Perform Basic attack
 		0:
 			intent_icon.texture = load("res://Assets/Card/SymbolSword.png")
+			
+		
+		# Perform ability
+		1:
+			intent_icon.texture = load("res://Assets/Card/SymbolFire.png")
+		
+		# Defend
+		2:
+			intent_icon.texture = load("res://Assets/Card/SymbolShield.png")
+			
+	intent_icon.visible = true
+
+func _on_orb_timer_timeout() -> void:
+	atk_orb.value = 1
+	print("the choice are ", enemy_atk)
+	match enemy_atk:
+		0:
 			if player_save.has_shield:
 				print("Shield blocked the attack!")
 				player_save.setShield(false)  # Shield is used
@@ -46,20 +66,10 @@ func _on_timer_timeout() -> void:
 				player_save.setHp(player_save.hp - 1)    # Hard coded damage
 				if(player_save.hp <= 0):
 					get_tree().change_scene_to_file("res://Scenes/scn_lost.tscn")
-		
-		# Perform ability
 		1:
-			$slime_ability.cast_ability()    # Hard coded ability. this code now assumes this 'enemy' node have a slime_ability
-			intent_icon.texture = load("res://Assets/Card/SymbolFire.png")
 			print("ability")
-		
-		# Defend
+			$slime_ability.cast_ability()    # Hard coded ability. this code now assumes this 'enemy' node have a slime_ability
 		2:
-			intent_icon.texture = load("res://Assets/Card/SymbolShield.png")
 			print("block")
-	intent_icon.visible = true
-
-
-func _on_orb_timer_timeout() -> void:
-	atk_orb.value = 0
+			
 	#intent_icon.visible = false

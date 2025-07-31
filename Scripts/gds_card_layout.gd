@@ -75,9 +75,6 @@ func display_card():
 		var addCard = preload("res://Scenes/Component/scn_card.tscn").instantiate()
 		addCard.card_type = type
 		addCard.card_selected.connect(_on_card_selected)
-		
-		#GlobalVariables.available_cards.append(addCard) # Keep track of available cards
-		#print("append ", addCard, " into global var")
 		grid.add_child(addCard)
 		it += 1
 
