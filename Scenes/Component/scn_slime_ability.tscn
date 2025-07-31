@@ -7,13 +7,8 @@ script = ExtResource("1_natqd")
 from = 6
 to = 15
 
-[node name="cast_ability" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [node name="ability_duration" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
-[connection signal="timeout" from="cast_ability" to="." method="_on_cast_ability_timeout"]
 [connection signal="timeout" from="ability_duration" to="." method="_on_ability_duration_timeout"]

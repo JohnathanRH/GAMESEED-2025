@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cx2ba2pdnkx63"]
+[gd_scene load_steps=10 format=3 uid="uid://cx2ba2pdnkx63"]
 
 [ext_resource type="Texture2D" uid="uid://br44embx7joe0" path="res://Assets/Bar/ActionBar_Under.png" id="1_u4w5w"]
 [ext_resource type="Texture2D" uid="uid://iontfqkh6w60" path="res://Assets/Bar/ActionBar_Over.png" id="2_rf0ix"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cd3mjgniugftn" path="res://Assets/Bar/HP_Under.png" id="6_rsx2h"]
 [ext_resource type="Texture2D" uid="uid://csc5vy7wlg6sc" path="res://Assets/Bar/HP_Over.png" id="7_68jtb"]
 [ext_resource type="Texture2D" uid="uid://bjvvwe35w6acl" path="res://Assets/Bar/HP_Process.png" id="8_mi71j"]
+[ext_resource type="Texture2D" uid="uid://cp5ycqq1nr7mx" path="res://Assets/Card/SymbolSword.png" id="9_68jtb"]
 
 [node name="scn_enemy_stats" type="Node"]
 
@@ -55,3 +56,8 @@ value = 10.0
 texture_under = ExtResource("6_rsx2h")
 texture_over = ExtResource("7_68jtb")
 texture_progress = ExtResource("8_mi71j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(238, 11)
+texture = ExtResource("9_68jtb")

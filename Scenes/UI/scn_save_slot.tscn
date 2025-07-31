@@ -5,3 +5,5 @@
 [node name="ScnSaveSlot" type="Button"]
 text = "Player Name"
 script = ExtResource("1_eo2hn")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
