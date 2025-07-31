@@ -9,42 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://jae2auaur8bf" path="res://Scenes/Component/scn_player_hp.tscn" id="7_d681f"]
 [ext_resource type="PackedScene" uid="uid://dhkwfv6ve430s" path="res://Scenes/UI/scn_pause_menu.tscn" id="7_tt125"]
 
-[sub_resource type="Animation" id="Animation_fxdt3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_vt8q2"]
-resource_name = "hurt"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(-0.133333, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(43, 116), Vector2(43, 116), Vector2(45.5, 116), Vector2(40.5, 116), Vector2(44.25, 116), Vector2(43, 116)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_us23w"]
-_data = {
-&"RESET": SubResource("Animation_fxdt3"),
-&"hurt": SubResource("Animation_vt8q2")
-}
-
 [node name="ScnStage1" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
