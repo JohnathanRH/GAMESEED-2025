@@ -2,7 +2,8 @@ extends Button
 
 @export var card_type: String = ""
 @export var is_flipped_up = false
-var is_sticky = false
+var has_matched := false
+var is_sticky := false
 
 var card_symbol = {"attack":"res://Assets/Card/SymbolSword.png", 
 					"fireball":"res://Assets/Card/SymbolFire.png", 

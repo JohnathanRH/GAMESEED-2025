@@ -136,13 +136,19 @@ func process_successfull_match(card_type: String, matches_card: Array):
 	matches[card_type].append_array(matches_card)
 	var required_pair = get_match_size(card_type)
 	var current_card_size = matches[card_type].size()
+	
+	# Record pair matched, and start the match timer
 	if current_card_size >= required_pair:
 		match_card_type = card_type
 		match_timer.start(check_time)
 		pair_matched += 1
+		
 		for card in matches[card_type]:
 			matched_card.append(card)
 			matches.erase(match_card_type)
+			card.has_matched = true
+			print(card)
+		
 		matched_card_type.append(match_card_type)
 		match_card_type = ""	
 
@@ -182,7 +188,6 @@ func get_match_size(card_type: String) -> int:
 			return 3
 		_:
 			return 99
-	
 
 func _on_timer_timeout() -> void:
 	for card in currently_flipped_card:
@@ -192,7 +197,6 @@ func _on_timer_timeout() -> void:
 	required_match = 0
 	GlobalVariables.is_checking_match = false
 
-
 func _on_match_timer_timeout() -> void:
 		for card_type in matched_card_type:
 			use_card(card_type)
@@ -201,8 +205,6 @@ func _on_match_timer_timeout() -> void:
 			card.modulate.a = 0
 			card.disabled = true
 			card.flip_down()
-			var find_card = GlobalVariables.available_cards.find(card)
-			GlobalVariables.available_cards.pop_at(find_card)
 		matched_card.clear()
 		
 
