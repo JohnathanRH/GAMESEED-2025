@@ -64,6 +64,7 @@ func _on_orb_timer_timeout() -> void:
 				player_save.setShield(false)  # Shield is used
 			else:
 				player_save.setHp(player_save.hp - 1)    # Hard coded damage
+				$attack_audio.play()
 				if(player_save.hp <= 0):
 					get_tree().change_scene_to_file("res://Scenes/scn_lost.tscn")
 		1:

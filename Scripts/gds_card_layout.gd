@@ -151,6 +151,7 @@ func use_card(card_type: String):
 	match card_type:
 		"attack":
 			damage_enemy(1) # Deals 2 damage
+			$attack_audio.play()
 		"fireball":
 			damage_enemy(2) # Deals 1 damage
 		"shield": 
