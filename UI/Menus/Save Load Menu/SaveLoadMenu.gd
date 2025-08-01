@@ -5,8 +5,8 @@ const SAVE_EXT = ".tres"
 
 @onready var slot_container = $CanvasLayer/VBoxContainer
 @onready var playerVar = PlayerVariables.save_file as PlayerSaveFile
-var slot_scene = preload("res://UI/Component/Save Load Button/scn_save_slot.tscn")
-var delete_scene = preload("res://UI/Component/Delete Save Button/scn_delete_save.tscn")
+var slot_scene = preload("res://UI/Component/Save Slot/scn_save_slot.tscn")
+var delete_scene = preload("res://UI/Component/Delete Save/scn_delete_save.tscn")
 
 func _ready() -> void:
 	

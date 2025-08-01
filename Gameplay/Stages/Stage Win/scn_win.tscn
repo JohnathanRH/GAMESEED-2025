@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b40o8yqwf41xf"]
 
 [ext_resource type="FontFile" uid="uid://bjq6c5ckmc1xc" path="res://Assets/monogram.ttf" id="1_0pmjo"]
-[ext_resource type="Script" uid="uid://6px400sfshoa" path="res://Gameplay/Stages/Stage Win/gds_win.gd" id="1_p46da"]
+[ext_resource type="Script" uid="uid://6px400sfshoa" path="res://Gameplay/Stages/Stage Win/StageWin.gd" id="1_p46da"]
 
 [node name="scn_win" type="Node2D"]
 script = ExtResource("1_p46da")

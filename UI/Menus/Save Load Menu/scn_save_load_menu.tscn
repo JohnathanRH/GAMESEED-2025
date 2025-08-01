@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://5774tqspa1so"]
 
-[ext_resource type="Script" uid="uid://dklqmvl41cjpg" path="res://UI/Menus/Save Load Menu/gds_save_load_menu.gd" id="1_uteln"]
+[ext_resource type="Script" uid="uid://dklqmvl41cjpg" path="res://UI/Menus/Save Load Menu/SaveLoadMenu.gd" id="1_uteln"]
 [ext_resource type="FontFile" uid="uid://bjq6c5ckmc1xc" path="res://Assets/monogram.ttf" id="2_oo1qv"]
 
 [node name="ScnSaveLoadMenu" type="PanelContainer"]

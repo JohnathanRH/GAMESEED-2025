@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cx2ba2pdnkx63"]
 
-[ext_resource type="Script" uid="uid://bdhnrd2hlou4a" path="res://UI/Component/Enemy Attack Bar/scn_enemy_stats.gd" id="1_71362"]
+[ext_resource type="Script" uid="uid://bdhnrd2hlou4a" path="res://UI/Component/Enemy Status/EnemyStatus.gd" id="1_71362"]
 [ext_resource type="Texture2D" uid="uid://br44embx7joe0" path="res://Assets/Bar/ActionBar_Under.png" id="2_40y4a"]
 [ext_resource type="Texture2D" uid="uid://iontfqkh6w60" path="res://Assets/Bar/ActionBar_Over.png" id="3_ptbg8"]
 [ext_resource type="Texture2D" uid="uid://cidnuv0cf0fll" path="res://Assets/Bar/ActionBar_Progress.png" id="4_fclbj"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://y10hu4m1b52t"]
 
-[ext_resource type="Script" uid="uid://daqpanysdsmkw" path="res://UI/Component/Player Status/gds_stats_placeholder.gd" id="1_08qig"]
+[ext_resource type="Script" uid="uid://daqpanysdsmkw" path="res://UI/Component/Player Status/PlayerStatus.gd" id="1_08qig"]
 
 [node name="stats_placeholder" type="Node"]
 script = ExtResource("1_08qig")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bbjfj2yxy4ls1"]
 
-[ext_resource type="Script" uid="uid://co2b2f5vhjxdv" path="res://Entities/Enemy/Ability/Slime/gds_slime_ability.gd" id="1_6gdig"]
+[ext_resource type="Script" uid="uid://co2b2f5vhjxdv" path="res://Entities/Enemy/Ability/Slime/SlimeAbility.gd" id="1_6gdig"]
 
 [node name="slime_ability" type="Node"]
 script = ExtResource("1_6gdig")

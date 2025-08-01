@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://btpigujkxa66e"]
 
-[ext_resource type="Script" uid="uid://c4bsxscm6jdjv" path="res://UI/Menus/Save Load Menu/Empty Save Menu/gds_input_empty_save_slot.gd" id="1_rm7i5"]
+[ext_resource type="Script" uid="uid://c4bsxscm6jdjv" path="res://UI/Menus/Save Load Menu/Empty Save Menu/EmptySaveMenu.gd" id="1_rm7i5"]
 
 [node name="EmptySaveMenu" type="PanelContainer"]
 anchors_preset = 15

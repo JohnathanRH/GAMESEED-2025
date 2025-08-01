@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvvj42pd11bdn"]
 
-[ext_resource type="Script" uid="uid://w8ebnx8ooq6i" path="res://Gameplay/Stages/Stage Lost/gds_lost.gd" id="1_8e8jp"]
+[ext_resource type="Script" uid="uid://w8ebnx8ooq6i" path="res://Gameplay/Stages/Stage Lost/StageLose.gd" id="1_8e8jp"]
 
 [node name="scn_lost" type="Node2D"]
 script = ExtResource("1_8e8jp")

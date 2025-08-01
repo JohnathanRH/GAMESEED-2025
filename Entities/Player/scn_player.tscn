@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cceb780wdmjgn"]
 
 [ext_resource type="Texture2D" uid="uid://r85ln5y2abxn" path="res://Assets/Entity/CharPlayer.png" id="1_cvnsp"]
-[ext_resource type="Script" uid="uid://db040f5j28gxd" path="res://Entities/Player/gds_player.gd" id="2_x8wep"]
+[ext_resource type="Script" uid="uid://db040f5j28gxd" path="res://Entities/Player/Player.gd" id="2_x8wep"]
 
 [sub_resource type="Animation" id="Animation_fxdt3"]
 length = 0.001

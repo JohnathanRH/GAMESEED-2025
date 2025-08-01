@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="PlayerSaveFile" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Save Files/player_save_file.gd" id="1_f3lq4"]
+[ext_resource type="Script" path="res://Save Files/PlayerSaveFile.gd" id="1_l03yp"]
 
 [resource]
-script = ExtResource("1_f3lq4")
-name = "Jonathan"
+script = ExtResource("1_l03yp")
+name = "jojo"
 hp = 10
 stage = "1"
 level = 1
