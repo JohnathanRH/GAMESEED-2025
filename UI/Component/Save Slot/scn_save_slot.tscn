@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://fy4idowpr0e5"]
+
+[ext_resource type="Script" uid="uid://j6luobpjiuxc" path="res://UI/Component/Save Slot/SaveSlot.gd" id="1_wmqha"]
+
+[node name="ScnSaveSlot" type="Button"]
+text = "Player Name"
+script = ExtResource("1_wmqha")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

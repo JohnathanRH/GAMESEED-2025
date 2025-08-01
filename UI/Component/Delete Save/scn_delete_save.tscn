@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://biesm8gq1vs4y"]
+
+[ext_resource type="Script" uid="uid://dxay40wvyew60" path="res://UI/Component/Delete Save/DeleteSave.gd" id="1_u8g65"]
+
+[node name="ScnDeleteSave" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Delete"
+script = ExtResource("1_u8g65")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

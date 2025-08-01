@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bngdfphj178wt"]
+
+[ext_resource type="Script" uid="uid://cgoslvqwcb0u1" path="res://Autoload/AudioManager.gd" id="1_0j6c5"]
+[ext_resource type="AudioStream" uid="uid://dsumhkayba3uw" path="res://Assets/Audio/Card_Flip1.mp3" id="1_fherh"]
+[ext_resource type="AudioStream" uid="uid://bpe0c0m34mct3" path="res://Assets/Audio/Attack_Sound1.mp3" id="2_0j6c5"]
+[ext_resource type="AudioStream" uid="uid://dp6pdexosrc2g" path="res://Assets/Audio/Heal_Sound1.mp3" id="4_207s8"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_0j6c5")
+
+[node name="Flip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_fherh")
+pitch_scale = 2.0
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_0j6c5")
+pitch_scale = 2.0
+
+[node name="Heal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_207s8")
+pitch_scale = 2.0

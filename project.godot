@@ -17,8 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerVariables="*res://Scripts/Autoload/gds_player_variables.gd"
-GlobalVariables="*res://Scripts/Autoload/gds_global_variables.gd"
+PlayerVariables="*res://Autoload/PlayerVariables.gd"
+GlobalVariables="*res://Autoload/GlobalVariables.gd"
+SceneManager="*res://Autoload/SceneManager.gd"
+PlayerActionManager="*res://Autoload/PlayerActionManager.gd"
+AudioManager="*res://Autoload/AudioManager.tscn"
 
 [display]
 

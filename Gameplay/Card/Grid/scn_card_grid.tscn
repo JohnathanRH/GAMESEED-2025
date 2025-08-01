@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bciaps16xgxoe"]
+
+[ext_resource type="Script" uid="uid://c78c5d4hd4m7w" path="res://Gameplay/Card/Grid/CardGrid.gd" id="1_quufs"]
+
+[node name="ScnCardGrid" type="GridContainer"]
+script = ExtResource("1_quufs")

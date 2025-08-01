@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbjfj2yxy4ls1"]
+
+[ext_resource type="Script" uid="uid://co2b2f5vhjxdv" path="res://Entities/Enemy/Ability/Slime/SlimeAbility.gd" id="1_6gdig"]
+
+[node name="slime_ability" type="Node"]
+script = ExtResource("1_6gdig")
+from = 6
+to = 15
+
+[node name="ability_duration" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="ability_duration" to="." method="_on_ability_duration_timeout"]

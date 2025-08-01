@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://cx2ba2pdnkx63"]
+
+[ext_resource type="Script" uid="uid://bdhnrd2hlou4a" path="res://UI/Component/Enemy Status/EnemyStatus.gd" id="1_71362"]
+[ext_resource type="Texture2D" uid="uid://br44embx7joe0" path="res://Assets/Bar/ActionBar_Under.png" id="2_40y4a"]
+[ext_resource type="Texture2D" uid="uid://iontfqkh6w60" path="res://Assets/Bar/ActionBar_Over.png" id="3_ptbg8"]
+[ext_resource type="Texture2D" uid="uid://cidnuv0cf0fll" path="res://Assets/Bar/ActionBar_Progress.png" id="4_fclbj"]
+[ext_resource type="Texture2D" uid="uid://lul86jbsba0g" path="res://Assets/Bar/Intent_Under.png" id="5_j20pc"]
+[ext_resource type="Texture2D" uid="uid://dplwlvkqqaydt" path="res://Assets/Bar/Intent_Progress.png" id="6_d6ru4"]
+[ext_resource type="Texture2D" uid="uid://cd3mjgniugftn" path="res://Assets/Bar/HP_Under.png" id="7_u1a6e"]
+[ext_resource type="Texture2D" uid="uid://csc5vy7wlg6sc" path="res://Assets/Bar/HP_Over.png" id="8_3xudn"]
+[ext_resource type="Texture2D" uid="uid://bjvvwe35w6acl" path="res://Assets/Bar/HP_Process.png" id="9_pb0dg"]
+[ext_resource type="Texture2D" uid="uid://cp5ycqq1nr7mx" path="res://Assets/Card/SymbolSword.png" id="10_bn4a8"]
+
+[node name="scn_enemy_stats" type="Node"]
+script = ExtResource("1_71362")
+
+[node name="intent_bar" type="TextureProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.0
+offset_top = 6.0
+offset_right = 73.0
+offset_bottom = 17.0
+grow_horizontal = 2
+max_value = 1.0
+value = 1.0
+texture_under = ExtResource("2_40y4a")
+texture_over = ExtResource("3_ptbg8")
+texture_progress = ExtResource("4_fclbj")
+
+[node name="hp_label" type="Label" parent="."]
+offset_left = 255.0
+offset_top = 136.0
+offset_right = 271.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "xy"
+horizontal_alignment = 1
+
+[node name="intent_orb" type="TextureProgressBar" parent="."]
+offset_left = 227.0
+offset_top = 1.0
+offset_right = 248.0
+offset_bottom = 25.0
+max_value = 1.0
+fill_mode = 3
+texture_under = ExtResource("5_j20pc")
+texture_progress = ExtResource("6_d6ru4")
+
+[node name="hp_bar" type="TextureProgressBar" parent="."]
+offset_left = 243.0
+offset_top = 133.0
+offset_right = 289.0
+offset_bottom = 173.0
+max_value = 10.0
+value = 10.0
+texture_under = ExtResource("7_u1a6e")
+texture_over = ExtResource("8_3xudn")
+texture_progress = ExtResource("9_pb0dg")
+
+[node name="intent_icon" type="Sprite2D" parent="."]
+position = Vector2(238, 11)
+texture = ExtResource("10_bn4a8")
