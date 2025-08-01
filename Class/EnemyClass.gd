@@ -64,7 +64,7 @@ func _on_intent_executor_timeout() -> void:
 		1: ability()
 		2: block_player_attack()
 	
-	enemy_intent = randi_range(0, 2)
+	enemy_intent = 1#randi_range(0, 2)
 
 func _on_block_timer_timeout() -> void:
 	enemy_resource.setHasShield(false)
