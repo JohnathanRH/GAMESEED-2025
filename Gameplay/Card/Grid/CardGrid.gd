@@ -12,6 +12,7 @@ func shuffle_children():
 	
 	children.shuffle()
 	
+	# reset all children and shuffle it
 	for child in children:
 		child.modulate.a = 1
 		child.disabled = false
@@ -20,6 +21,6 @@ func shuffle_children():
 		remove_child(child)
 		add_child(child)
 		move_child(child, -1)
-	for child in children:
+	for child in children: # use condensing animation
 		child.condensing()
 	pass
