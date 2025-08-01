@@ -21,6 +21,10 @@ func ability() -> void:
 	
 	var card_count = cards.size()
 	
+	# if theres only 8 card left, restrict the amount that can be affected to 1
+	if (card_count < 8):
+		amount = 1
+	
 	# Prevent the ability if card count is <= 4
 	if (card_count > 4):
 		

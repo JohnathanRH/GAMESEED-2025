@@ -6,6 +6,6 @@
 script = ExtResource("1_l03yp")
 name = "Jonathan"
 hp = 10
-stage = "5"
+stage = "3"
 level = 1
-has_shield = false
+has_shield = true
