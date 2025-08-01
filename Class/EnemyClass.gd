@@ -19,11 +19,12 @@ func _ready() -> void:
 	enemy_resource.hpSet.connect(die_check)
 	$intent_timer.wait_time = enemy_resource.intent_interval
 	$intent_executor.wait_time = $intent_timer.wait_time - 0.1
-
+	$block_timer.wait_time = enemy_resource.block_duration
 
 	# Connect various signals
 	$intent_timer.timeout.connect(_on_intent_timer_timeout)
 	$intent_executor.timeout.connect(_on_intent_executor_timeout)
+	$block_timer.timeout.connect(_on_block_timer_timeout)
 
 # Death check, this function runs everytime the hp value changes
 func die_check() -> void:
@@ -44,20 +45,26 @@ func basic_attack() -> void:
 			get_tree().change_scene_to_file("res://Gameplay/Stages/Stage Lost/scn_lost.tscn") 	
 
 func block_player_attack() -> void:
-	pass # Pending block attack system design
+	enemy_resource.setHasShield(true)
+	$block_timer.start()
 
 # Since abilities are unique, enemies should override this method in their own script
 func ability() -> void:
 	pass
 
 func _on_intent_timer_timeout() -> void:
-	print(enemy_resource.hp)
 	$intent_executor.start()
 
 # Execute the intent.
 func _on_intent_executor_timeout() -> void:
+	
+	# Action pool
 	match enemy_intent:
 		0: basic_attack()
-		1: print("ability")
-		2: print("block")
-	enemy_intent = randi_range(0, 2) # Pick random number after attacking
+		1: ability()
+		2: block_player_attack()
+	
+	enemy_intent = randi_range(0, 2)
+
+func _on_block_timer_timeout() -> void:
+	enemy_resource.setHasShield(false)

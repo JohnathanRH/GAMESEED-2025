@@ -6,4 +6,5 @@ extends EnemyClass
 
 # Custom ability unique to this slime
 func ability() -> void:
-	pass
+	AudioManager.play_attack()
+	

@@ -12,16 +12,21 @@ func _ready() -> void:
 	# Initialize all of the UI components
 	$intent_bar.max_value = enemy_resource.intent_interval*100
 	$hp_bar.max_value = enemy_hp
+	$shield_bar.max_value = enemy_resource.block_duration*100
+	$shield_bar/Timer.wait_time = enemy_resource.block_duration
+	
 	$hp_bar.value = enemy_resource.hp
 	
 	# Connect the intent timers, to update the UI appropriately
 	intent_timer.timeout.connect(_on_intent_timer_timeout)
 	intent_executor.timeout.connect(_on_intent_executor_timeout)
+	enemy_resource.hasShieldSet.connect(shield_toggled)
 
 func _process(delta: float) -> void:
 	$intent_bar.value = $intent_bar.max_value - (intent_timer.time_left*100)
 	$hp_label.text = str(enemy_resource.hp) + "/" + str(enemy_hp)
 	$hp_bar.value = enemy_resource.hp
+	$shield_bar.value = $shield_bar/Timer.time_left*100
 
 # Update icon after the enemy intent timer timed out
 func _on_intent_timer_timeout():
@@ -34,4 +39,8 @@ func _on_intent_timer_timeout():
 
 func _on_intent_executor_timeout():
 	$intent_orb.value = 0
-	
+
+func shield_toggled():
+	if (enemy_resource.has_shield == true):
+		$shield_bar/Timer.start()
+	$shield_icon.visible = enemy_resource.has_shield
