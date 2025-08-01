@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="PlayerSaveFile" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Save Files/player_save_file.gd" id="1_e2wwu"]
+[ext_resource type="Script" path="res://Save Files/player_save_file.gd" id="1_f3lq4"]
 
 [resource]
-script = ExtResource("1_e2wwu")
+script = ExtResource("1_f3lq4")
 name = "Jonathan"
 hp = 10
 stage = "1"
