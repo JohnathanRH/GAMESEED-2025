@@ -14,7 +14,8 @@ func _ready() -> void:
 	# Initialize timer
 	$intent_timer.wait_time = enemy_resource.intent_interval
 	$intent_executor.wait_time = $intent_timer.wait_time - 0.1
-	
+
+
 	# Connect various signals
 	$intent_timer.timeout.connect(_on_intent_timer_timeout)
 	$intent_executor.timeout.connect(_on_intent_executor_timeout)

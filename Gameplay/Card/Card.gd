@@ -43,10 +43,11 @@ func flip_down():
 func dissolving():
 	$AnimationPlayer.play("dissolving")
 
+func reset():
+	$AnimationPlayer.play("RESET")
 
 func condensing():
 	$AnimationPlayer.play("condensing")
-	
 
 func _on_mouse_entered() -> void:
 	if !is_flipped_up:
@@ -56,3 +57,13 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	if !is_flipped_up:
 		$HoverAnimPlayer.play("hover_exit")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name=="flip_down" and has_matched:
+		dissolving()
+		pass
+	elif anim_name=="dissolving":
+		self.disabled = true
+		self.modulate.a = 0
+		

@@ -1,6 +1,6 @@
 extends Control
 
-@export var check_time := 0.2 # its probably better to + this with the animation time to offset this wait time.
+@onready var check_time := GlobalVariables.check_time # its probably better to + this with the animation time to offset this wait time.
 
 @export var grid_size = 5
 @export var grid_scale: float = 1
@@ -36,7 +36,7 @@ var pair_matched: int = 0:
 		pair_matched = add_pair 
 		print("current matched pair: ", pair_matched)
 		if(pair_matched >= num_of_2_pair_card+num_of_3_pair_card):
-			$ShuffleTimer.start(check_time*2)
+			$ShuffleTimer.start()
 			
 
 # Add card into deck
@@ -74,9 +74,11 @@ func _ready() -> void:
 	self.match_successful.connect(PlayerActionManager.on_match_successful)
 
 	GlobalVariables.current_state = State.IDLE
+	GlobalVariables.check_time_changed.connect(_on_check_time_changed)
 
 	display_card()
 	grid.shuffle_children()
+	
 
 
 # Logic when function selected
@@ -105,6 +107,7 @@ func _on_card_selected(card_type: String, card_node: Node):
 			
 			if currently_flipped_card.size() == required_match: # check if the match card are succesfull
 				GlobalVariables.current_state = State.CHECKING
+				matched_card_type.append(card_type)
 				#process_successfull_match(card_type, currently_flipped_card)
 				match_timer.start(check_time)
 				pair_matched += 1
@@ -166,12 +169,16 @@ func _on_match_timer_timeout() -> void:
 		for card in currently_flipped_card:
 			#card.modulate = 0
 			card.has_matched = true
-			card.dissolving()
-			card.disabled = true
+			card.flip_down()
 			
+		for card in currently_flipped_card:
+			card.disabled = true
 		currently_flipped_card.clear()
 		GlobalVariables.current_state = State.IDLE
 
 func _on_shuffle_timer_timeout() -> void:
 	grid.shuffle_children()
-	pair_matched = 1
+	pair_matched = 0
+
+func _on_check_time_changed(value: float):
+	check_time = value

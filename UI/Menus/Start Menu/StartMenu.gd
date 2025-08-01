@@ -7,3 +7,7 @@ func _on_btn_start_pressed() -> void:
 
 func _on_btn_quit_pressed() -> void:
 	get_tree().quit(0)
+
+
+func _on_btn_options_pressed() -> void:
+	$OptionMenu.visible = true
