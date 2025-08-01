@@ -2,6 +2,7 @@ extends Node
 
 @onready var attack_sound = $Attack
 @onready var flip_sound = $Flip
+@onready var heal_sound = $Heal
 var is_muted = false
 
 func play_attack():
@@ -9,6 +10,9 @@ func play_attack():
 
 func play_flip():
 	flip_sound.play()
+
+func play_heal():
+	heal_sound.play()
 
 func toggle_mute(toggled: bool):
 	is_muted = true

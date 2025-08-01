@@ -30,6 +30,7 @@ func on_match_successful(card_type: String):
 				player_save.hp = 10
 				player_save.setHp(player_save.hp)
 				print(player_save.hp) # debugging
+			AudioManager.play_heal()
 		_:
 			return 99
 
