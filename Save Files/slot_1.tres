@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="PlayerSaveFile" load_steps=2 format=3 uid="uid://csct78cew1kbu"]
+[gd_resource type="Resource" script_class="PlayerSaveFile" load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://dm7ruk56xplmc" path="res://Save Files/player_save_file.gd" id="1_l03yp"]
+[ext_resource type="Script" path="res://Save Files/player_save_file.gd" id="1_l03yp"]
 
 [resource]
 script = ExtResource("1_l03yp")
 name = "Jonathan"
 hp = 10
-stage = "res://Scenes/Stages/scn_stage_1.tscn"
-level = 0
+stage = "res://Gameplay/Stages/Stage 1/scn_stage_1.tscn"
+level = 1
 has_shield = false

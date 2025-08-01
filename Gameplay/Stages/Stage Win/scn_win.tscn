@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://b40o8yqwf41xf"]
+
+[ext_resource type="FontFile" uid="uid://bjq6c5ckmc1xc" path="res://Assets/monogram.ttf" id="1_0pmjo"]
+[ext_resource type="Script" uid="uid://6px400sfshoa" path="res://Gameplay/Stages/Stage Win/gds_win.gd" id="1_p46da"]
+
+[node name="scn_win" type="Node2D"]
+script = ExtResource("1_p46da")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BtnContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -6.0
+offset_right = 115.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnRestart" type="Button" parent="CanvasLayer/BtnContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="BtnQuit" type="Button" parent="CanvasLayer/BtnContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="BtnQuit2" type="Button" parent="CanvasLayer/BtnContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 62.0
+offset_top = 21.0
+offset_right = 388.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("1_0pmjo")
+theme_override_font_sizes/font_size = 62
+text = "You Win"
+
+[connection signal="pressed" from="CanvasLayer/BtnContainer/BtnRestart" to="." method="_on_btn_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/BtnContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/BtnContainer/BtnQuit2" to="." method="_on_btn_quit_2_pressed"]
