@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dylts7gw1wu7p"]
+[gd_scene load_steps=12 format=3 uid="uid://dylts7gw1wu7p"]
 
 [ext_resource type="Script" uid="uid://n0sak2hisn3k" path="res://Gameplay/Card/Card.gd" id="1_fkgdv"]
 [ext_resource type="Texture2D" uid="uid://c8fb1h2br228v" path="res://Assets/Card/CardBack.png" id="2_aqtin"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cpsulctoa7imi" path="res://Assets/Card/CardFront.png" id="4_lpk1a"]
 [ext_resource type="Animation" uid="uid://g1g5uklocd8" path="res://Assets/Animation/hover_enter.res" id="5_gpaf4"]
 [ext_resource type="Animation" uid="uid://bjtuqjgvmre2m" path="res://Assets/Animation/hover_exit.res" id="6_h1ho3"]
-[ext_resource type="AudioStream" uid="uid://dsumhkayba3uw" path="res://Assets/Audio/Card_Flip1.mp3" id="7_5xa83"]
 
 [sub_resource type="Animation" id="Animation_e5cf3"]
 length = 0.001
@@ -217,10 +216,6 @@ speed_scale = 1.7
 libraries = {
 &"": SubResource("AnimationLibrary_ix4hd")
 }
-
-[node name="card_flip_audio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_5xa83")
-pitch_scale = 2.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

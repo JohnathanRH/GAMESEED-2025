@@ -34,6 +34,7 @@ func basic_attack() -> void:
 	# if not, damage the player
 	else:
 		player_save.setHp(player_save.hp - enemy_resource.basic_damage)
+		AudioManager.play_attack()
 
 func block_player_attack() -> void:
 	pass # Pending block attack system design

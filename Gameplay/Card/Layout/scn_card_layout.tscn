@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://fhjuspelnwbg"]
+[gd_scene load_steps=2 format=3 uid="uid://fhjuspelnwbg"]
 
 [ext_resource type="Script" uid="uid://warrsyxau5ud" path="res://Gameplay/Card/Layout/gds_card_layout.gd" id="1_5wxb4"]
-[ext_resource type="AudioStream" uid="uid://bpe0c0m34mct3" path="res://Assets/Audio/Attack_Sound1.mp3" id="2_vctbb"]
 
 [node name="ScnCardLayout" type="Control"]
 layout_mode = 3
@@ -39,10 +38,6 @@ one_shot = true
 
 [node name="ShuffleTimer" type="Timer" parent="."]
 one_shot = true
-
-[node name="attack_audio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_vctbb")
-volume_db = 1.5
 
 [connection signal="timeout" from="MismatchTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="MatchTimer" to="." method="_on_match_timer_timeout"]

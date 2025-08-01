@@ -19,8 +19,5 @@ func _ready() -> void:
 func update_hp_bar():
 	hp_bar.value = player_save.hp
 
-func _on_hp_changed() -> void:
-	hp_bar.value = player_save.hp
-
 func _player_hurt():
 	anim_player.play("hurt")

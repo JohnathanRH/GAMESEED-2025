@@ -1,0 +1,41 @@
+extends Node
+
+@onready var player_save = PlayerVariables.save_file as PlayerSaveFile
+#@onready var enemy = self.get_tree().get_first_node_in_group("enemy") as EnemyClass
+var enemy: EnemyClass
+var enemy_resource: EnemyResource
+var current_enemy: EnemyResource
+
+func register_enemy(stage_enemy: EnemyClass):
+	enemy = stage_enemy
+	enemy_resource = enemy.enemy_resource
+	current_enemy = enemy_resource.duplicate() as EnemyResource
+
+func on_match_successful(card_type: String):
+	print("signal is connected")
+	match card_type:
+		"attack":
+			damage_enemy(1) # Deals 2 damage
+			AudioManager.play_attack()
+		"fireball":
+			damage_enemy(2) # Deals 1 damage
+			AudioManager.play_attack()
+		"shield": 
+			player_save.setShield(true)  # Activate shield
+			print("Used Shield")
+		"heal":
+			player_save.setHp(player_save.hp + 2) # Heals 2 hp
+			print(player_save.hp) # debugging
+			if player_save.hp >= 10:
+				player_save.hp = 10
+				player_save.setHp(player_save.hp)
+				print(player_save.hp) # debugging
+		_:
+			return 99
+
+func damage_enemy(amount: int) -> void:
+	current_enemy.hp -= amount
+	print("Enemy takes %d damage. Remaining HP: %d" % [amount, current_enemy.hp])
+	enemy_resource.setHP(current_enemy.hp)
+	if current_enemy.hp <= 0:
+		print("Enemy died!")

@@ -27,7 +27,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func flip_up():
 	if is_flipped_up: return
-	$card_flip_audio.play()
+	AudioManager.play_flip()
 	is_flipped_up = true
 	self.disabled = true
 	$HoverAnimPlayer.play("hover_exit")
@@ -36,7 +36,7 @@ func flip_up():
 
 func flip_down():
 	if !is_flipped_up: return
-	$card_flip_audio.play()
+	AudioManager.play_flip()
 	is_flipped_up = false
 	if is_sticky:
 		self.disabled = true

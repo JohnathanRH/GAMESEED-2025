@@ -26,10 +26,9 @@ var matched_card = []
 var matched_card_type = []
 @onready var mismatch_timer = $MismatchTimer
 @onready var match_timer = $MatchTimer
+signal match_successful(card_type)
 
-@onready var enemy = self.get_tree().get_first_node_in_group("enemy") as EnemyClass
-@onready var enemy_resource = enemy.enemy_resource as EnemyResource
-var current_enemy: EnemyResource
+
 
 # keep track how many card matched
 var pair_matched: int = 0:
@@ -81,12 +80,9 @@ func display_card():
 		it += 1
 
 func _ready() -> void:
-	# Initalize Enemy
-	if enemy_resource:
-		current_enemy = enemy_resource.duplicate() as EnemyResource
-		print("Enemy HP: %d" % current_enemy.hp)
-		for i in deck:
-			print("this is are the deck : ", i)
+	PlayerActionManager.register_enemy(self.get_tree().get_first_node_in_group("enemy"))
+
+	self.match_successful.connect(PlayerActionManager.on_match_successful)
 	
 	GlobalVariables.is_checking_match = false
 	
@@ -153,32 +149,7 @@ func process_successfull_match(card_type: String, matches_card: Array):
 		match_card_type = ""	
 
 # DENAR THIS IS YOUR JOB GO DO YOUR THING
-func use_card(card_type: String):
-	match card_type:
-		"attack":
-			damage_enemy(1) # Deals 2 damage
-			$attack_audio.play()
-		"fireball":
-			damage_enemy(2) # Deals 1 damage
-		"shield": 
-			player_save.setShield(true)  # Activate shield
-			print("Used Shield")
-		"heal":
-			player_save.setHp(player_save.hp + 2) # Heals 2 hp
-			print(player_save.hp) # debugging
-			if player_save.hp >= 10:
-				player_save.hp = 10
-				player_save.setHp(player_save.hp)
-				print(player_save.hp) # debugging
-		_:
-			return 99
 
-func damage_enemy(amount: int) -> void:
-	current_enemy.hp -= amount
-	print("Enemy takes %d damage. Remaining HP: %d" % [amount, current_enemy.hp])
-	enemy_resource.setHP(current_enemy.hp)
-	if current_enemy.hp <= 0:
-		print("Enemy died!")
 
 	
 func get_match_size(card_type: String) -> int:
@@ -200,15 +171,13 @@ func _on_timer_timeout() -> void:
 
 func _on_match_timer_timeout() -> void:
 		for card_type in matched_card_type:
-			use_card(card_type)
+			emit_signal("match_successful", card_type)
 		matched_card_type.clear()
 		for card in matched_card:
 			card.modulate.a = 0
 			card.disabled = true
 			card.flip_down()
 		matched_card.clear()
-		
-
 
 func _on_shuffle_timer_timeout() -> void:
 	grid.shuffle_children()
