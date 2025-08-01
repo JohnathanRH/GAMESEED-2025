@@ -40,6 +40,8 @@ func basic_attack() -> void:
 	else:
 		player_save.setHp(player_save.hp - enemy_resource.basic_damage)
 		AudioManager.play_attack()
+		if player_save.hp <= 0:
+			get_tree().change_scene_to_file("res://Gameplay/Stages/Stage Lost/scn_lost.tscn") 	
 
 func block_player_attack() -> void:
 	pass # Pending block attack system design
