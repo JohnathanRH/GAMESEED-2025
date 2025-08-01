@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cx2ba2pdnkx63"]
+[gd_scene load_steps=11 format=3 uid="uid://cx2ba2pdnkx63"]
 
+[ext_resource type="Script" uid="uid://bdhnrd2hlou4a" path="res://Scripts/scn_enemy_stats.gd" id="1_mi71j"]
 [ext_resource type="Texture2D" uid="uid://br44embx7joe0" path="res://Assets/Bar/ActionBar_Under.png" id="1_u4w5w"]
 [ext_resource type="Texture2D" uid="uid://iontfqkh6w60" path="res://Assets/Bar/ActionBar_Over.png" id="2_rf0ix"]
 [ext_resource type="Texture2D" uid="uid://cidnuv0cf0fll" path="res://Assets/Bar/ActionBar_Progress.png" id="3_b56kh"]
@@ -11,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cp5ycqq1nr7mx" path="res://Assets/Card/SymbolSword.png" id="9_68jtb"]
 
 [node name="scn_enemy_stats" type="Node"]
+script = ExtResource("1_mi71j")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="intent_bar" type="TextureProgressBar" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -36,7 +38,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "xy"
 horizontal_alignment = 1
 
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
+[node name="intent_orb" type="TextureProgressBar" parent="."]
 offset_left = 227.0
 offset_top = 1.0
 offset_right = 248.0
@@ -46,7 +48,7 @@ fill_mode = 3
 texture_under = ExtResource("4_b56kh")
 texture_progress = ExtResource("5_mv8cm")
 
-[node name="TextureProgressBar3" type="TextureProgressBar" parent="."]
+[node name="hp_bar" type="TextureProgressBar" parent="."]
 offset_left = 243.0
 offset_top = 133.0
 offset_right = 289.0
@@ -57,6 +59,6 @@ texture_under = ExtResource("6_rsx2h")
 texture_over = ExtResource("7_68jtb")
 texture_progress = ExtResource("8_mi71j")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="intent_icon" type="Sprite2D" parent="."]
 position = Vector2(238, 11)
 texture = ExtResource("9_68jtb")

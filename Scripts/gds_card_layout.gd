@@ -27,8 +27,8 @@ var matched_card_type = []
 @onready var mismatch_timer = $MismatchTimer
 @onready var match_timer = $MatchTimer
 
-# Enemy
-@export var enemy_resource: EnemyResource
+@onready var enemy = self.get_tree().get_first_node_in_group("enemy") as EnemyClass
+@onready var enemy_resource = enemy.enemy_resource as EnemyResource
 var current_enemy: EnemyResource
 
 # keep track how many card matched
