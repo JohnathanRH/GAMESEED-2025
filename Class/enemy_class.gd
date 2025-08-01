@@ -22,7 +22,7 @@ func _ready() -> void:
 # Death check, this function runs everytime the hp value changes
 func die_check() -> void:
 	if(enemy_resource.hp <= 0):
-		get_tree().change_scene_to_file("res://Scenes/scn_win.tscn")
+		get_tree().change_scene_to_file("res://Gameplay/Stages/Stage Win/scn_win.tscn")
 
 # Basic attack that all enemies should have by default
 func basic_attack() -> void:
