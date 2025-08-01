@@ -7,6 +7,7 @@ class_name EnemyResource
 @export var intent_interval : float
 @export var basic_damage : float
 @export var block_duration : float
+@export var ability_duration : float
 
 var has_shield := false
 

@@ -24,7 +24,6 @@ func load_data() -> PlayerSaveFile:
 
 func save_data() -> void:
 	# Since this script is autoloaded, this save function can be fired from anywhere!
-	print(save_file.hp)
 	ResourceSaver.save(save_file, save_path)
 
 func reset_data() -> void:

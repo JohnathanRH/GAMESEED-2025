@@ -4,7 +4,9 @@
 
 [resource]
 script = ExtResource("2_iidh5")
-hp = 10
+hp = 1
 intent_interval = 2.0
 basic_damage = 1.0
+block_duration = 3.0
+ability_duration = 4.0
 metadata/_custom_type_script = "uid://b7pkd4wj6qjtu"

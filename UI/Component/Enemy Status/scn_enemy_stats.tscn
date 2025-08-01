@@ -70,6 +70,7 @@ position = Vector2(264, 68)
 texture = ExtResource("11_478b7")
 
 [node name="shield_bar" type="TextureProgressBar" parent="."]
+visible = false
 offset_left = 239.0
 offset_top = 52.0
 offset_right = 285.0

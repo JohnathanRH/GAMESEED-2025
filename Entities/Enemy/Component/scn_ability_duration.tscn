@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dgt5k0owhyh3h"]
+
+[node name="ability_duration" type="Timer"]
+wait_time = 3.0
+one_shot = true

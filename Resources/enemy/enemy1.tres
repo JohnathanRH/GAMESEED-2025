@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_i7xmp")
-hp = 20
+hp = 1
 intent_interval = 5.0
 basic_damage = 1.0
-block_duration = 7.0
+block_duration = 8.0
+ability_duration = 3.0
 metadata/_custom_type_script = "uid://b7pkd4wj6qjtu"

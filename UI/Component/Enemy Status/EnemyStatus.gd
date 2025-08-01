@@ -44,3 +44,4 @@ func shield_toggled():
 	if (enemy_resource.has_shield == true):
 		$shield_bar/Timer.start()
 	$shield_icon.visible = enemy_resource.has_shield
+	$shield_bar.visible = enemy_resource.has_shield

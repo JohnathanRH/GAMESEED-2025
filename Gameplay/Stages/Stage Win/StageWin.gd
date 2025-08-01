@@ -7,6 +7,7 @@ func _on_btn_quit_pressed() -> void:
 
 func _on_btn_restart_pressed() -> void:
 	PlayerVariables.reset_data()
+	print(player.stage)
 	SceneManager.load_scene(player.stage)
 
 

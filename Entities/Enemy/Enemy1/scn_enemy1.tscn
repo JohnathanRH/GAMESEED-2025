@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbxqx374l7ug"]
+[gd_scene load_steps=8 format=3 uid="uid://cbxqx374l7ug"]
 
 [ext_resource type="Texture2D" uid="uid://cukxclb2d5koo" path="res://Assets/Entity/EnemySlime.png" id="1_t530e"]
 [ext_resource type="Script" uid="uid://cv2g2c3f1fhr5" path="res://Entities/Enemy/Enemy1/Enemy1.gd" id="2_ti0ae"]
 [ext_resource type="Resource" uid="uid://i613t5c2g4x1" path="res://Resources/Enemy/enemy1.tres" id="3_t530e"]
+[ext_resource type="PackedScene" uid="uid://xpqidnnkk5we" path="res://Entities/Enemy/Component/scn_intent_executor.tscn" id="4_xtsug"]
+[ext_resource type="PackedScene" uid="uid://bxnie5mgpcmo2" path="res://Entities/Enemy/Component/scn_intent_timer.tscn" id="5_6yqc6"]
+[ext_resource type="PackedScene" uid="uid://cp4xrrwthuv11" path="res://Entities/Enemy/Component/scn_block_timer.tscn" id="6_l0iev"]
+[ext_resource type="PackedScene" uid="uid://dgt5k0owhyh3h" path="res://Entities/Enemy/Component/scn_ability_duration.tscn" id="7_87ww2"]
 
 [node name="enemy" type="Sprite2D" groups=["enemy"]]
 texture = ExtResource("1_t530e")
@@ -10,18 +14,11 @@ script = ExtResource("2_ti0ae")
 amount = 4
 enemy_resource = ExtResource("3_t530e")
 
-[node name="intent_timer" type="Timer" parent="."]
-autostart = true
+[node name="intent_timer" parent="." instance=ExtResource("5_6yqc6")]
 
-[node name="intent_executor" type="Timer" parent="."]
-wait_time = 0.9
-one_shot = true
+[node name="intent_executor" parent="." instance=ExtResource("4_xtsug")]
 
-[node name="block_timer" type="Timer" parent="."]
-one_shot = true
+[node name="block_timer" parent="." instance=ExtResource("6_l0iev")]
 
-[node name="ability_duration" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
-[connection signal="timeout" from="ability_duration" to="." method="_on_ability_duration_timeout"]
+[node name="ability_duration" parent="." instance=ExtResource("7_87ww2")]
+wait_time = 1.0
