@@ -1,12 +1,15 @@
 extends Node2D
 
 @onready var player = PlayerVariables.save_file as PlayerSaveFile
+@onready var enemy = get_node_or_null("../Container/enemy")
+
 
 func _on_btn_quit_pressed() -> void:
 	get_tree().quit(0)
 
 func _on_btn_restart_pressed() -> void:
 	PlayerVariables.reset_data()
+
 	SceneManager.load_scene(player.stage)
 
 

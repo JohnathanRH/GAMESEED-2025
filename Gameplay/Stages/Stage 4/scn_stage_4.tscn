@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkyk58ui1c0je"]
+
+[ext_resource type="Script" uid="uid://dabcguqucchqd" path="res://Gameplay/Stages/Stage 1/Stage1.gd" id="1_1i1no"]
+[ext_resource type="PackedScene" uid="uid://fhjuspelnwbg" path="res://Gameplay/Card/Layout/scn_card_layout.tscn" id="2_7yo2p"]
+[ext_resource type="PackedScene" uid="uid://dhkwfv6ve430s" path="res://UI/Menus/Pause Menu/scn_pause_menu.tscn" id="3_dgsmf"]
+[ext_resource type="PackedScene" uid="uid://y10hu4m1b52t" path="res://UI/Component/Player Status/stats_placeholder.tscn" id="4_ep8eu"]
+[ext_resource type="PackedScene" uid="uid://cx2ba2pdnkx63" path="res://UI/Component/Enemy Status/scn_enemy_stats.tscn" id="5_v6kf1"]
+[ext_resource type="PackedScene" uid="uid://jae2auaur8bf" path="res://UI/Component/Hp Bar/hp_bar.tscn" id="6_iwe4k"]
+[ext_resource type="PackedScene" uid="uid://cceb780wdmjgn" path="res://Entities/Player/scn_player.tscn" id="7_sml85"]
+[ext_resource type="PackedScene" uid="uid://dlxe4td228wop" path="res://Entities/Enemy/Enemy2/scn_enemy2.tscn" id="8_rabsi"]
+[ext_resource type="Resource" uid="uid://djeqmgxted0mp" path="res://Resources/Enemy/enemy4.tres" id="9_dr3bj"]
+
+[node name="ScnStage4" type="Node2D"]
+script = ExtResource("1_1i1no")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="CanvasLayer" parent="."]
+
+[node name="ScnCardLayout" parent="Panel" instance=ExtResource("2_7yo2p")]
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" parent="Panel/ScnCardLayout" index="0"]
+anchors_preset = -1
+anchor_top = 0.505556
+anchor_bottom = 0.505556
+metadata/_edit_use_anchors_ = true
+
+[node name="ScnPauseMenu" parent="Panel" instance=ExtResource("3_dgsmf")]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="stats_placeholder" parent="CanvasLayer" instance=ExtResource("4_ep8eu")]
+
+[node name="scn_enemy_stats" parent="CanvasLayer" instance=ExtResource("5_v6kf1")]
+
+[node name="scn_player_hp" parent="CanvasLayer" instance=ExtResource("6_iwe4k")]
+
+[node name="Container" type="Node2D" parent="."]
+position = Vector2(44, 111)
+
+[node name="player" parent="Container" instance=ExtResource("7_sml85")]
+
+[node name="enemy" parent="." instance=ExtResource("8_rabsi")]
+position = Vector2(263, 112)
+enemy_resource = ExtResource("9_dr3bj")
+next_stage_path = "res://Gameplay/Stages/Stage 5/scn_stage_5.tscn"
+
+[editable path="Panel/ScnCardLayout"]

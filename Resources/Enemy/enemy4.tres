@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://djeqmgxted0mp"]
+
+[ext_resource type="Script" uid="uid://b7pkd4wj6qjtu" path="res://Resources/Enemy/EnemyResource.gd" id="1_bmj52"]
+
+[resource]
+script = ExtResource("1_bmj52")
+hp = 15
+intent_interval = 8.0
+basic_damage = 2.0
+metadata/_custom_type_script = "uid://b7pkd4wj6qjtu"
