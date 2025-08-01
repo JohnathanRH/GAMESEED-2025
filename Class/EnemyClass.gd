@@ -44,12 +44,10 @@ func ability() -> void:
 	pass
 
 func _on_intent_timer_timeout() -> void:
-	print(enemy_intent)
 	$intent_executor.start()
 
 # Execute the intent.
 func _on_intent_executor_timeout() -> void:
-	print(enemy_intent)
 	match enemy_intent:
 		0: basic_attack()
 		1: print("ability")

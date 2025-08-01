@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://fhjuspelnwbg"]
 
-[ext_resource type="Script" uid="uid://warrsyxau5ud" path="res://Gameplay/Card/Layout/gds_card_layout.gd" id="1_5wxb4"]
+[ext_resource type="Script" uid="uid://warrsyxau5ud" path="res://Gameplay/Card/Layout/CardLayout.gd" id="1_5wxb4"]
 
 [node name="ScnCardLayout" type="Control"]
 layout_mode = 3

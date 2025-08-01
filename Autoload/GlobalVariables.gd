@@ -2,5 +2,6 @@ extends Node
 
 # For easy access.
 
-var is_checking_match := false
+enum State { IDLE, AWAITING_SECOND_CARD, CHECKING }
+var current_state = State.IDLE
 var card_grid : GridContainer

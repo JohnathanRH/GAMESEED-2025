@@ -1,7 +1,6 @@
 extends Node
 
-@onready var player_save = PlayerVariables.save_file as PlayerSaveFile
-#@onready var enemy = self.get_tree().get_first_node_in_group("enemy") as EnemyClass
+@onready var player_save: PlayerSaveFile
 var enemy: EnemyClass
 var enemy_resource: EnemyResource
 var current_enemy: EnemyResource
@@ -10,6 +9,7 @@ func register_enemy(stage_enemy: EnemyClass):
 	enemy = stage_enemy
 	enemy_resource = enemy.enemy_resource
 	current_enemy = enemy_resource.duplicate() as EnemyResource
+	player_save = PlayerVariables.save_file
 
 func on_match_successful(card_type: String):
 	print("signal is connected")
