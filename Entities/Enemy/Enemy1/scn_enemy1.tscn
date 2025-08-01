@@ -10,9 +10,8 @@ script = ExtResource("2_ti0ae")
 enemy_resource = ExtResource("3_t530e")
 
 [node name="intent_timer" type="Timer" parent="."]
-one_shot = true
 autostart = true
 
 [node name="intent_executor" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.9
 one_shot = true

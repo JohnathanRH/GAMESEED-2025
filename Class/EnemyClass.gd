@@ -13,6 +13,7 @@ var enemy_intent : int
 func _ready() -> void:
 	# Initialize timer
 	$intent_timer.wait_time = enemy_resource.intent_interval
+	$intent_executor.wait_time = $intent_timer.wait_time - 0.1
 	
 	# Connect various signals
 	$intent_timer.timeout.connect(_on_intent_timer_timeout)
@@ -42,14 +43,14 @@ func ability() -> void:
 	pass
 
 func _on_intent_timer_timeout() -> void:
-	enemy_intent = randi_range(0, 2)
+	print(enemy_intent)
 	$intent_executor.start()
 
 # Execute the intent.
 func _on_intent_executor_timeout() -> void:
+	print(enemy_intent)
 	match enemy_intent:
 		0: basic_attack()
 		1: print("ability")
 		2: print("block")
-	
-	$intent_timer.start()
+	enemy_intent = randi_range(0, 2) # Pick random number after attacking

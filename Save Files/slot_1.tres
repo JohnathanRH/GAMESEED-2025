@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_l03yp")
-name = "jojo"
+name = "Jonathan"
 hp = 10
 stage = "1"
 level = 1

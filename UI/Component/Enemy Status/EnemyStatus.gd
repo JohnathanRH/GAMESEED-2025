@@ -34,3 +34,4 @@ func _on_intent_timer_timeout():
 
 func _on_intent_executor_timeout():
 	$intent_orb.value = 0
+	
