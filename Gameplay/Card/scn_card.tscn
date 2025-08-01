@@ -1,11 +1,34 @@
-[gd_scene load_steps=12 format=3 uid="uid://dylts7gw1wu7p"]
+[gd_scene load_steps=21 format=3 uid="uid://dylts7gw1wu7p"]
 
+[ext_resource type="Shader" uid="uid://bspwji80d7xqk" path="res://Gameplay/Card/Card.gdshader" id="1_aqtin"]
 [ext_resource type="Script" uid="uid://n0sak2hisn3k" path="res://Gameplay/Card/Card.gd" id="1_fkgdv"]
 [ext_resource type="Texture2D" uid="uid://c8fb1h2br228v" path="res://Assets/Card/CardBack.png" id="2_aqtin"]
 [ext_resource type="Texture2D" uid="uid://c7j2y68dxkie8" path="res://Assets/Card/SymbolFire.png" id="3_y2mq2"]
 [ext_resource type="Texture2D" uid="uid://cpsulctoa7imi" path="res://Assets/Card/CardFront.png" id="4_lpk1a"]
 [ext_resource type="Animation" uid="uid://g1g5uklocd8" path="res://Assets/Animation/hover_enter.res" id="5_gpaf4"]
 [ext_resource type="Animation" uid="uid://bjtuqjgvmre2m" path="res://Assets/Animation/hover_exit.res" id="6_h1ho3"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fkgdv"]
+noise_type = 2
+frequency = 0.0127
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aqtin"]
+noise = SubResource("FastNoiseLite_fkgdv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fkgdv"]
+shader = ExtResource("1_aqtin")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_aqtin")
+shader_parameter/dissolve_value = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aqtin"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_y2mq2"]
+noise = SubResource("FastNoiseLite_aqtin")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpk1a"]
+shader = ExtResource("1_aqtin")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_y2mq2")
+shader_parameter/dissolve_value = 1.0
 
 [sub_resource type="Animation" id="Animation_e5cf3"]
 length = 0.001
@@ -48,26 +71,38 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:disabled")
+tracks/3/path = NodePath("Sprite2D2:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(10, 12)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D2:position")
+tracks/4/path = NodePath("Sprite2D2:material:shader_parameter/dissolve_value")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(10, 12)]
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D2/Sprite2D:material:shader_parameter/dissolve_value")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_hscuo"]
@@ -109,18 +144,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_vow2q"]
 resource_name = "flip_up"
@@ -161,22 +184,56 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+
+[sub_resource type="Animation" id="Animation_y2mq2"]
+resource_name = "dissolving"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1.62451, 0.116629),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2/Sprite2D:material:shader_parameter/dissolve_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 0.0544094),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fkgdv"]
+resource_name = "condensing"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:material:shader_parameter/dissolve_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(0.999998, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5xwnk"]
 _data = {
 &"RESET": SubResource("Animation_e5cf3"),
+&"condensing": SubResource("Animation_fkgdv"),
+&"dissolving": SubResource("Animation_y2mq2"),
 &"flip_down": SubResource("Animation_hscuo"),
 &"flip_up": SubResource("Animation_vow2q")
 }
@@ -195,15 +252,18 @@ offset_right = 10.0
 offset_bottom = 12.0
 scale = Vector2(1.1, 1.1)
 pivot_offset = Vector2(1, 1)
+disabled = true
 toggle_mode = true
 script = ExtResource("1_fkgdv")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fkgdv")
 position = Vector2(10, 12)
 texture = ExtResource("2_aqtin")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D2"]
 visible = false
+material = SubResource("ShaderMaterial_lpk1a")
 texture = ExtResource("3_y2mq2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

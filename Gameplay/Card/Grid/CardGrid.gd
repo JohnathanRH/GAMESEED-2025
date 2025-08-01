@@ -14,7 +14,9 @@ func shuffle_children():
 	
 	for child in children:
 		child.modulate.a = 1
+		child.condensing()
 		child.disabled = false
+		child.has_matched = false
 		remove_child(child)
 		add_child(child)
 		move_child(child, -1)

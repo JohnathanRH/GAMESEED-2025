@@ -22,7 +22,7 @@ var required_match = 0
 var matches = {}
 var currently_flipped_card = []
 var match_card_type = ""
-var matched_card = []
+#var matched_card = []
 var matched_card_type = []
 @onready var mismatch_timer = $MismatchTimer
 @onready var match_timer = $MatchTimer
@@ -105,38 +105,40 @@ func _on_card_selected(card_type: String, card_node: Node):
 			
 			if currently_flipped_card.size() == required_match: # check if the match card are succesfull
 				GlobalVariables.current_state = State.CHECKING
-				process_successfull_match(card_type, currently_flipped_card)
-				currently_flipped_card.clear() # clear the track of flipped up card
+				#process_successfull_match(card_type, currently_flipped_card)
+				match_timer.start(check_time)
+				pair_matched += 1
+				#currently_flipped_card.clear() # clear the track of flipped up card
 		
 				required_match = 0 # reset the required match
-				GlobalVariables.current_state = State.IDLE
+				
 		State.CHECKING:
 			pass
 
 	
-
+# this is a security if some bug appear on the future
 # process the succesfull match
-func process_successfull_match(card_type: String, matches_card: Array):
-	if not matches.has(card_type):
-		matches[card_type] = []
-	matches[card_type].append_array(matches_card)
-	var required_pair = get_match_size(card_type)
-	var current_card_size = matches[card_type].size()
-	
-	# Record pair matched, and start the match timer
-	if current_card_size >= required_pair:
-		match_card_type = card_type
-		match_timer.start(check_time)
-		pair_matched += 1
-		
-		for card in matches[card_type]:
-			matched_card.append(card)
-			matches.erase(match_card_type)
-			card.has_matched = true
-			print(card)
-		
-		matched_card_type.append(match_card_type)
-		match_card_type = ""	
+#func process_successfull_match(card_type: String, matches_card: Array):
+	#if not matches.has(card_type):
+		#matches[card_type] = []
+	#matches[card_type].append_array(matches_card)
+	#var required_pair = get_match_size(card_type)
+	#var current_card_size = matches[card_type].size()
+	#
+	## Record pair matched, and start the match timer
+	#if current_card_size >= required_pair:
+		#match_card_type = card_type
+		#match_timer.start(check_time)
+		#pair_matched += 1
+		#
+		#for card in matches[card_type]:
+			#matched_card.append(card)
+			#matches.erase(match_card_type)
+			#card.has_matched = true
+			##print(card)
+		#
+		#matched_card_type.append(match_card_type)
+		#match_card_type = ""	
 
 
 func get_match_size(card_type: String) -> int:
@@ -157,14 +159,18 @@ func _on_timer_timeout() -> void:
 	GlobalVariables.current_state = State.IDLE
 
 func _on_match_timer_timeout() -> void:
+		print("match timeout")
 		for card_type in matched_card_type:
 			emit_signal("match_successful", card_type)
 		matched_card_type.clear()
-		for card in matched_card:
-			card.modulate.a = 0
+		for card in currently_flipped_card:
+			#card.modulate = 0
+			card.has_matched = true
+			card.dissolving()
 			card.disabled = true
-			card.flip_down()
-		matched_card.clear()
+			
+		currently_flipped_card.clear()
+		GlobalVariables.current_state = State.IDLE
 
 func _on_shuffle_timer_timeout() -> void:
 	grid.shuffle_children()
