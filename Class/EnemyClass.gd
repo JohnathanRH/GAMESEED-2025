@@ -10,8 +10,13 @@ class_name EnemyClass
 
 var enemy_intent : int
 
+# Duplicate the enemy resource upon entering the tree
+func _enter_tree() -> void:
+	enemy_resource = enemy_resource.duplicate()
+
 func _ready() -> void:
 	# Initialize timer
+	enemy_resource.hpSet.connect(die_check)
 	$intent_timer.wait_time = enemy_resource.intent_interval
 	$intent_executor.wait_time = $intent_timer.wait_time - 0.1
 
@@ -19,7 +24,6 @@ func _ready() -> void:
 	# Connect various signals
 	$intent_timer.timeout.connect(_on_intent_timer_timeout)
 	$intent_executor.timeout.connect(_on_intent_executor_timeout)
-	enemy_resource.hpSet.connect(die_check)
 
 # Death check, this function runs everytime the hp value changes
 func die_check() -> void:
@@ -45,6 +49,7 @@ func ability() -> void:
 	pass
 
 func _on_intent_timer_timeout() -> void:
+	print(enemy_resource.hp)
 	$intent_executor.start()
 
 # Execute the intent.
