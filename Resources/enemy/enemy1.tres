@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_i7xmp")
-hp = 1
+hp = 10
 intent_interval = 5.0
 basic_damage = 1.0
 block_duration = 8.0

@@ -7,7 +7,8 @@ const OPTION_MENU = preload("res://UI/Menus/Option Menu/option_menu.tscn")
 
 const STAGE_1 = preload("res://Gameplay/Stages/Stage 1/scn_stage_1.tscn")
 const STAGE_2 = preload("res://Gameplay/Stages/Stage 2/scn_stage_2.tscn")
-const STAGE_3 = preload("res://Entities/Enemy/Enemy3/scn_stage_3.tscn")
+const STAGE_3 = preload("res://Gameplay/Stages/Stage 3/scn_stage_3.tscn")
+const STAGE_4 = preload("res://Gameplay/Stages/Stage 4/scn_stage_4.tscn")
 const WIN_STAGE = preload("res://Gameplay/Stages/Stage Win/scn_win.tscn")
 const LOSE_STAGE = preload("res://Gameplay/Stages/Stage Lost/scn_lost.tscn")
 
@@ -30,6 +31,8 @@ func load_scene(path: String):
 			scene_path = STAGE_2
 		"3":
 			scene_path = STAGE_3
+		"4":
+			scene_path = STAGE_4
 		"win":
 			scene_path = WIN_STAGE
 		"lose":
