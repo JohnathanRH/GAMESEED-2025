@@ -19,7 +19,7 @@ func _on_pressed() -> void:
 	var playerVar = PlayerVariables.save_file
 	
 	if is_empty:
-		get_tree().change_scene_to_file("res://UI/Menus/Save Load Menu/Empty Save Menu/empty_save_menu.tscn")
+		SceneManager.load_scene("emptysave")
 		
 	else:
-		get_tree().change_scene_to_file(playerVar.stage)
+		SceneManager.load_scene(playerVar.stage)

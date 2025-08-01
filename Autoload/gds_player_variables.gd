@@ -18,7 +18,7 @@ func load_data() -> PlayerSaveFile:
 		new_save.hp = 10
 		new_save.name = ""
 		new_save.level = 0
-		new_save.stage = "res://Gameplay/Stages/Stage 1/scn_stage_1.tscn"
+		new_save.stage = "1"
 		print("Save NOT found")
 		return new_save
 
