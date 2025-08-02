@@ -12,6 +12,7 @@ signal nameSet
 signal hpSet
 signal levelSet
 signal shieldSet
+signal stageSet
 
 # Setter functions, no need for getters for now
 func setName(newName : String) -> void:
@@ -29,3 +30,7 @@ func setLevel(newLevel : int) -> void:
 func setShield(newShield: bool) -> void:
 	has_shield = newShield
 	shieldSet.emit()
+
+func setStage(newStage : String) -> void:
+	stage = newStage
+	stageSet.emit()

@@ -115,6 +115,10 @@ func _on_card_selected(card_type: String, card_node: Node):
 				#process_successfull_match(card_type, currently_flipped_card)
 				match_timer.start(check_time) 
 				pair_matched += 1
+				
+				# Mark these cards as matched (ahead of the timer)
+				for card in currently_flipped_card:
+					card.has_matched = true
 				#currently_flipped_card.clear() # clear the track of flipped up card
 		
 				required_match = 0 # reset the required match
@@ -174,7 +178,7 @@ func _on_match_timer_timeout() -> void:
 		matched_card_type.clear()
 		for card in currently_flipped_card: # flip down and dissolve all matched card
 			#card.modulate = 0
-			card.has_matched = true
+			#card.has_matched = true
 			card.flip_down()
 			
 		for card in currently_flipped_card: # why different section? so that it will not give the animation bug

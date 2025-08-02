@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_l03yp")
-name = "Jonathan"
+name = "Guntur"
 hp = 10
-stage = "1"
+stage = "2"
 level = 1
 has_shield = false

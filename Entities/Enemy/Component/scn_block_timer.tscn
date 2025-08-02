@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cp4xrrwthuv11"]
+
+[node name="block_timer" type="Timer"]
+one_shot = true

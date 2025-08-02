@@ -1,0 +1,23 @@
+[gd_scene load_steps=8 format=3 uid="uid://vpyqanjg5cao"]
+
+[ext_resource type="Texture2D" uid="uid://cukxclb2d5koo" path="res://Assets/Entity/EnemySlime.png" id="1_jn65t"]
+[ext_resource type="Script" uid="uid://bumwhxsf7ucei" path="res://Entities/Enemy/Enemy2/Enemy2.gd" id="2_i5j0g"]
+[ext_resource type="Resource" uid="uid://mjcmchye4hq4" path="res://Resources/Enemy/enemy4.tres" id="3_22qhi"]
+[ext_resource type="PackedScene" uid="uid://bxnie5mgpcmo2" path="res://Entities/Enemy/Component/scn_intent_timer.tscn" id="4_g1wcl"]
+[ext_resource type="PackedScene" uid="uid://xpqidnnkk5we" path="res://Entities/Enemy/Component/scn_intent_executor.tscn" id="5_d0r5k"]
+[ext_resource type="PackedScene" uid="uid://cp4xrrwthuv11" path="res://Entities/Enemy/Component/scn_block_timer.tscn" id="6_ojqm2"]
+[ext_resource type="PackedScene" uid="uid://dgt5k0owhyh3h" path="res://Entities/Enemy/Component/scn_ability_duration.tscn" id="7_msbre"]
+
+[node name="enemy" type="Sprite2D" groups=["enemy"]]
+modulate = Color(0.949716, 0.000745449, 0.950719, 1)
+texture = ExtResource("1_jn65t")
+script = ExtResource("2_i5j0g")
+enemy_resource = ExtResource("3_22qhi")
+
+[node name="intent_timer" parent="." instance=ExtResource("4_g1wcl")]
+
+[node name="intent_executor" parent="." instance=ExtResource("5_d0r5k")]
+
+[node name="block_timer" parent="." instance=ExtResource("6_ojqm2")]
+
+[node name="ability_duration" parent="." instance=ExtResource("7_msbre")]
