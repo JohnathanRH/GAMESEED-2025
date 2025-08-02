@@ -28,3 +28,7 @@ func _ready() -> void:
 		slot_container.add_child(delete_instance)
 
 # save button funcitonality moved to the button scene itself
+
+
+func _on_cancel_pressed() -> void:
+	SceneManager.load_scene("start")

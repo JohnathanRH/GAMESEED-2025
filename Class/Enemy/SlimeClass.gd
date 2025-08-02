@@ -1,7 +1,6 @@
 extends EnemyClass
 class_name SlimeClass
 
-
 @export var amount := 1
 var affected_cards : Array[Button]
 

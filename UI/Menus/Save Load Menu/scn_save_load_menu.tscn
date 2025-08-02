@@ -38,3 +38,12 @@ offset_bottom = 35.5
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
+
+[node name="cancel" type="Button" parent="CanvasLayer"]
+offset_left = 6.0
+offset_top = 154.0
+offset_right = 38.0
+offset_bottom = 175.0
+text = "Cancel"
+
+[connection signal="pressed" from="CanvasLayer/cancel" to="." method="_on_cancel_pressed"]
