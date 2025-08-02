@@ -16,6 +16,7 @@ script = ExtResource("1_phowi")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 320.0
 offset_bottom = 180.0
+color = Color(0.439216, 0.439216, 0.439216, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="CanvasLayer" parent="."]

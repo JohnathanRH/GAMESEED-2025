@@ -16,6 +16,7 @@ script = ExtResource("1_a5tot")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 320.0
 offset_bottom = 180.0
+color = Color(0.439049, 0.439049, 0.439049, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="CanvasLayer" parent="."]
@@ -54,7 +55,6 @@ position = Vector2(44, 111)
 
 [node name="enemy" parent="." instance=ExtResource("8_wlp7u")]
 position = Vector2(263, 112)
-amount = 1
 next_stage_path = "2"
 
 [editable path="Panel/ScnCardLayout"]

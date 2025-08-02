@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://g27rjkdusos"]
+[gd_scene load_steps=9 format=3 uid="uid://g27rjkdusos"]
 
 [ext_resource type="Texture2D" uid="uid://cukxclb2d5koo" path="res://Assets/Entity/EnemySlime.png" id="1_2fkn5"]
 [ext_resource type="Script" uid="uid://bumwhxsf7ucei" path="res://Entities/Enemy/Enemy2/Enemy2.gd" id="2_2lrnh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xpqidnnkk5we" path="res://Entities/Enemy/Component/scn_intent_executor.tscn" id="5_h7sry"]
 [ext_resource type="PackedScene" uid="uid://cp4xrrwthuv11" path="res://Entities/Enemy/Component/scn_block_timer.tscn" id="6_8dl6d"]
 [ext_resource type="PackedScene" uid="uid://dgt5k0owhyh3h" path="res://Entities/Enemy/Component/scn_ability_duration.tscn" id="7_40ly4"]
+[ext_resource type="PackedScene" uid="uid://t3k213d2mhj6" path="res://UI/Component/VFX/scn_vfx.tscn" id="8_n77ej"]
 
 [node name="enemy" type="Sprite2D" groups=["enemy"]]
 modulate = Color(0, 0.584314, 1, 1)
@@ -21,3 +22,6 @@ enemy_resource = ExtResource("3_fl86y")
 [node name="block_timer" parent="." instance=ExtResource("6_8dl6d")]
 
 [node name="ability_duration" parent="." instance=ExtResource("7_40ly4")]
+
+[node name="ScnAttackVfx" parent="." instance=ExtResource("8_n77ej")]
+visible = false

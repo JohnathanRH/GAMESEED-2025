@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cceb780wdmjgn"]
+[gd_scene load_steps=7 format=3 uid="uid://cceb780wdmjgn"]
 
 [ext_resource type="Texture2D" uid="uid://r85ln5y2abxn" path="res://Assets/Entity/CharPlayer.png" id="1_cvnsp"]
 [ext_resource type="Script" uid="uid://db040f5j28gxd" path="res://Entities/Player/Player.gd" id="2_x8wep"]
+[ext_resource type="PackedScene" uid="uid://t3k213d2mhj6" path="res://UI/Component/VFX/scn_vfx.tscn" id="3_dq6vu"]
 
 [sub_resource type="Animation" id="Animation_fxdt3"]
 length = 0.001
@@ -48,3 +49,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_us23w")
 }
 speed_scale = 2.0
+
+[node name="ScnAttackVfx" parent="." instance=ExtResource("3_dq6vu")]
+visible = false
+flip_h = true

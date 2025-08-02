@@ -83,7 +83,7 @@ texture_progress = ExtResource("9_pb0dg")
 one_shot = true
 
 [node name="intent_icon_timer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.3
 one_shot = true
 
 [connection signal="timeout" from="intent_icon_timer" to="." method="_on_intent_icon_timer_timeout"]

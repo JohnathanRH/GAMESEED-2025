@@ -10,6 +10,8 @@ class_name EnemyClass
 @export var is_final_enemy : bool = false   # check if it's the final enemy
 @onready var player_save = PlayerVariables.save_file as PlayerSaveFile # Open player_save_file.gd for more info
 
+signal attack
+
 var enemy_intent : int
 
 # Duplicate the enemy resource upon entering the tree
@@ -56,6 +58,7 @@ func basic_attack() -> void:
 		AudioManager.play_attack()
 		if player_save.hp <= 0:
 			SceneManager.load_scene("lose")
+	emit_signal("attack")
 
 func block_player_attack() -> void:
 	enemy_resource.setHasShield(true)
@@ -74,9 +77,9 @@ func _on_intent_executor_timeout() -> void:
 		0: basic_attack()
 		1: ability()
 		2: block_player_attack()
-
+	randomize()
 	enemy_intent = randi_range(0, 2)
-	$intent_timer.start()
+	#$intent_timer.start()
 
 func _on_block_timer_timeout() -> void:
 	enemy_resource.setHasShield(false)
