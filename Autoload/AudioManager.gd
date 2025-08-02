@@ -38,5 +38,5 @@ func play_shield_break():
 	shield_break_sound.play()
 
 func toggle_mute(toggled: bool):
-	is_muted = true
+	is_muted = !toggled
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), toggled)
