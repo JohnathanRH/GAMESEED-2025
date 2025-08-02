@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 
 # Get needed nodes and resources
 @onready var enemy = self.get_tree().get_first_node_in_group("enemy") as EnemyClass

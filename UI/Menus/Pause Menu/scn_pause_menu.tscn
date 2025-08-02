@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhkwfv6ve430s"]
+[gd_scene load_steps=9 format=3 uid="uid://dhkwfv6ve430s"]
 
 [ext_resource type="Script" uid="uid://dao86dashntxg" path="res://UI/Menus/Pause Menu/PauseMenu.gd" id="1_u48vd"]
+[ext_resource type="PackedScene" uid="uid://cae1s2hj0d2ua" path="res://UI/Menus/Pause Menu/scn_card_info.tscn" id="2_luuag"]
+[ext_resource type="Texture2D" uid="uid://cpsulctoa7imi" path="res://Assets/Card/CardFront.png" id="3_e6vpn"]
+[ext_resource type="Texture2D" uid="uid://cp5ycqq1nr7mx" path="res://Assets/Card/SymbolSword.png" id="4_s5wdy"]
+[ext_resource type="Texture2D" uid="uid://c7j2y68dxkie8" path="res://Assets/Card/SymbolFire.png" id="5_4wgun"]
+[ext_resource type="Texture2D" uid="uid://dq28xie3tdhhp" path="res://Assets/Card/SymbolShield.png" id="6_sr2go"]
+[ext_resource type="Texture2D" uid="uid://ctbmnh2ugnsf7" path="res://Assets/Card/CardFrontSpecial.png" id="7_yqiea"]
+[ext_resource type="Texture2D" uid="uid://bjt02k1ex6y4w" path="res://Assets/Card/SymbolHeal.png" id="8_7r13o"]
 
 [node name="ScnPauseMenu" type="CanvasLayer"]
 process_mode = 3
@@ -12,7 +19,60 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.0627451)
+color = Color(0, 0, 0, 0.4)
+metadata/_edit_lock_ = true
+
+[node name="attack_info" parent="." instance=ExtResource("2_luuag")]
+offset_left = 21.0
+offset_top = 34.0
+offset_right = 41.0
+offset_bottom = 58.0
+texture = ExtResource("3_e6vpn")
+info_title = "Basic Attack"
+info_content = Array[String](["- 1 Damage", "- Lorem Ipsum"])
+
+[node name="card_icon" parent="attack_info" index="0"]
+position = Vector2(10, 12)
+texture = ExtResource("4_s5wdy")
+
+[node name="flame_info" parent="." instance=ExtResource("2_luuag")]
+offset_left = 21.0
+offset_top = 62.0
+offset_right = 41.0
+offset_bottom = 86.0
+texture = ExtResource("3_e6vpn")
+info_title = "Engulf"
+info_content = Array[String](["- 2 Damage", "- Lorem"])
+
+[node name="card_icon" parent="flame_info" index="0"]
+position = Vector2(10, 12)
+texture = ExtResource("5_4wgun")
+
+[node name="shied_info" parent="." instance=ExtResource("2_luuag")]
+offset_left = 21.0
+offset_top = 90.0
+offset_right = 41.0
+offset_bottom = 114.0
+texture = ExtResource("3_e6vpn")
+info_title = "Defensive Manuever"
+info_content = Array[String](["Block one attack"])
+
+[node name="card_icon" parent="shied_info" index="0"]
+position = Vector2(10, 13)
+texture = ExtResource("6_sr2go")
+
+[node name="heal_info" parent="." instance=ExtResource("2_luuag")]
+offset_left = 21.0
+offset_top = 117.0
+offset_right = 41.0
+offset_bottom = 141.0
+texture = ExtResource("7_yqiea")
+info_title = "Blessing"
+info_content = Array[String](["- Heal 2 HP"])
+
+[node name="card_icon" parent="heal_info" index="0"]
+position = Vector2(10, 12)
+texture = ExtResource("8_7r13o")
 
 [node name="BtnContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -20,10 +80,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -121.5
-offset_top = -20.0
-offset_right = 121.5
-offset_bottom = 20.0
+offset_left = 25.0
+offset_top = -49.0
+offset_right = 140.0
+offset_bottom = 47.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -41,9 +101,14 @@ text = "Quit"
 
 [node name="BtnQuit2" type="Button" parent="BtnContainer"]
 layout_mode = 2
-text = "Main Mneu"
+text = "Main Menu"
 
 [connection signal="pressed" from="BtnContainer/BtnResume" to="." method="_on_btn_resume_pressed"]
 [connection signal="pressed" from="BtnContainer/BtnOptions" to="." method="_on_btn_options_pressed"]
 [connection signal="pressed" from="BtnContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]
 [connection signal="pressed" from="BtnContainer/BtnQuit2" to="." method="_on_btn_quit_2_pressed"]
+
+[editable path="attack_info"]
+[editable path="flame_info"]
+[editable path="shied_info"]
+[editable path="heal_info"]
