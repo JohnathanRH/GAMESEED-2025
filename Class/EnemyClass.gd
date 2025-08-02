@@ -36,7 +36,7 @@ func die_check() -> void:
 		var newStage = int(player_save.stage)+1
 		player_save.setStage(str(newStage))
 		PlayerVariables.save_data()
-		get_tree().change_scene_to_file("res://Gameplay/Stages/Stage Win/scn_win.tscn")
+		SceneManager.load_scene("win")
 
 # Basic attack that all enemies should have by default
 func basic_attack() -> void:

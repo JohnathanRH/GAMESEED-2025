@@ -22,4 +22,7 @@ func _on_pressed() -> void:
 		SceneManager.load_scene("emptysave")
 		
 	else:
-		SceneManager.load_scene(playerVar.stage)
+		if(playerVar.stage == "5"):
+			SceneManager.load_scene("win")
+		else:
+			SceneManager.load_scene(playerVar.stage)
