@@ -2,7 +2,7 @@
 extends Resource
 class_name EnemyResource
 
-#@export var animation : SpriteFrames
+# Data fields
 @export var hp : int
 @export var intent_interval : float
 @export var basic_damage : float
@@ -11,13 +11,21 @@ class_name EnemyResource
 
 var has_shield := false
 
+# Signals
 signal hpSet
 signal hasShieldSet
 
-func setHP(newHP: int) ->void:
+# Set HP and emit signal
+func setHP(newHP: int) -> void:
 	hp = newHP
 	hpSet.emit()
 
-func setHasShield(newShield : bool):
+# Set shield status and emit signal
+func setHasShield(newShield: bool) -> void:
 	has_shield = newShield
 	hasShieldSet.emit()
+
+# Optional: Reset method placeholder (not currently used)
+#@export var MaxHp: int = 10
+#func reset():
+#	hp = MaxHp

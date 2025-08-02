@@ -31,6 +31,8 @@ func flip_up():
 	is_flipped_up = true
 	disabled = true
 	$HoverAnimPlayer.play("hover_exit")
+	
+	_set_card_front()
 	$AnimationPlayer.play("flip_up")
 
 func flip_down():
@@ -67,3 +69,14 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		self.disabled = true
 		self.modulate.a = 0
 		
+func _set_card_front():
+	var symbol_texture = load(card_symbol[card_type])
+
+	if card_type == "heal":
+		$Sprite2D2.visible = false
+		$Sprite2D3.visible = true
+		$Sprite2D3/Sprite2D.texture = symbol_texture
+	else:
+		$Sprite2D2.visible = true
+		$Sprite2D3.visible = false
+		$Sprite2D2/Sprite2D.texture = symbol_texture
