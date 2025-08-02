@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://daqpanysdsmkw" path="res://UI/Component/Player Status/PlayerStatus.gd" id="1_08qig"]
 [ext_resource type="Texture2D" uid="uid://dq28xie3tdhhp" path="res://Assets/Card/SymbolShield.png" id="2_pq7p2"]
 
-[node name="stats_placeholder" type="Node"]
+[node name="stats_placeholder" type="CanvasLayer"]
+layer = 0
 script = ExtResource("1_08qig")
 
 [node name="player_name" type="Label" parent="."]

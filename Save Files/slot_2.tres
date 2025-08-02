@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerSaveFile" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Save Files/PlayerSaveFile.gd" id="1_e2wwu"]
+
+[resource]
+script = ExtResource("1_e2wwu")
+name = "JonathanRH"
+hp = 10
+stage = "1"
+level = 1
+has_shield = false
