@@ -1,22 +1,12 @@
-<<<<<<< HEAD
-[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://cggxr26ljawrm"]
-=======
 [gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://pj3qa8m35ev2"]
->>>>>>> d1230d913af5c09050337c753a5eacb076ed32c8
 
 [ext_resource type="Script" uid="uid://b7pkd4wj6qjtu" path="res://Resources/Enemy/EnemyResource.gd" id="1_dfvjv"]
 
 [resource]
 script = ExtResource("1_dfvjv")
-<<<<<<< HEAD
-hp = 5
-intent_interval = 1.5
-basic_damage = 1.0
-=======
 hp = 30
 intent_interval = 8.0
 basic_damage = 3.0
 block_duration = 2.0
 ability_duration = 6.0
->>>>>>> d1230d913af5c09050337c753a5eacb076ed32c8
 metadata/_custom_type_script = "uid://b7pkd4wj6qjtu"
