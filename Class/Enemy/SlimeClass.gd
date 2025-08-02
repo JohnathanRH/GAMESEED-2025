@@ -5,6 +5,8 @@ class_name SlimeClass
 @export var amount := 1
 var affected_cards : Array[Button]
 
+signal slime_ability
+
 # Custom ability unique to this slime
 func ability() -> void:
 	AudioManager.play_attack()
@@ -37,6 +39,7 @@ func ability() -> void:
 			affected_cards.append(selected_card)
 	
 	$ability_duration.start()
+	emit_signal("slime_ability")
 
 # Return to normal and reset affected cards array
 func _on_ability_duration_timeout() -> void:

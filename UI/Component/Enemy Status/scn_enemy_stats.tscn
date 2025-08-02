@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cd3mjgniugftn" path="res://Assets/Bar/HP_Under.png" id="7_u1a6e"]
 [ext_resource type="Texture2D" uid="uid://csc5vy7wlg6sc" path="res://Assets/Bar/HP_Over.png" id="8_3xudn"]
 [ext_resource type="Texture2D" uid="uid://bjvvwe35w6acl" path="res://Assets/Bar/HP_Process.png" id="9_pb0dg"]
-[ext_resource type="Texture2D" uid="uid://cp5ycqq1nr7mx" path="res://Assets/Card/SymbolSword.png" id="10_bn4a8"]
+[ext_resource type="Texture2D" uid="uid://lvekpx5sywq7" path="res://Assets/UI/IntentAttackOff.png" id="10_478b7"]
 [ext_resource type="Texture2D" uid="uid://dq28xie3tdhhp" path="res://Assets/Card/SymbolShield.png" id="11_478b7"]
 
 [node name="scn_enemy_stats" type="CanvasLayer"]
@@ -62,8 +62,8 @@ texture_over = ExtResource("8_3xudn")
 texture_progress = ExtResource("9_pb0dg")
 
 [node name="intent_icon" type="Sprite2D" parent="."]
-position = Vector2(238, 11)
-texture = ExtResource("10_bn4a8")
+position = Vector2(237, 11)
+texture = ExtResource("10_478b7")
 
 [node name="shield_icon" type="Sprite2D" parent="."]
 visible = false
@@ -81,3 +81,9 @@ texture_progress = ExtResource("9_pb0dg")
 
 [node name="Timer" type="Timer" parent="shield_bar"]
 one_shot = true
+
+[node name="intent_icon_timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="intent_icon_timer" to="." method="_on_intent_icon_timer_timeout"]

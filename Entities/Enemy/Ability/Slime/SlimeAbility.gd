@@ -10,6 +10,8 @@ class_name SlimeAbility
 var rng = RandomNumberGenerator.new()
 var affected_cards : Array[Button]
 
+
+
 func cast_ability() -> void:
 	# Reset the affected card (This is a funny way to do it lmao)
 	$ability_duration.timeout.emit()

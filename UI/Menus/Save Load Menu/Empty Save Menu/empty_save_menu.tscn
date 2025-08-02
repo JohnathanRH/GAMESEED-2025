@@ -23,10 +23,8 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Enter Your Name"
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 0
 text = "Jonathan"
 placeholder_text = "Jonathan"
 

@@ -193,3 +193,4 @@ func _on_shuffle_timer_timeout() -> void:
 
 func _on_check_time_changed(value: float):
 	check_time = value
+	GlobalVariables.set_check_time(check_time)
