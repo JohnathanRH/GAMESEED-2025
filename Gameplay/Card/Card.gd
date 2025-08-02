@@ -64,7 +64,6 @@ func _on_mouse_exited() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name=="flip_down" and has_matched:
 		dissolving()
-		pass
 	elif anim_name=="dissolving":
 		self.disabled = true
 		self.modulate.a = 0
