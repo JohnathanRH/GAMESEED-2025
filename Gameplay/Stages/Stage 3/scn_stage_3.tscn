@@ -54,5 +54,6 @@ position = Vector2(44, 111)
 
 [node name="enemy" parent="." instance=ExtResource("8_4a3yq")]
 position = Vector2(263, 112)
+next_stage_path = "4"
 
 [editable path="Panel/ScnCardLayout"]
