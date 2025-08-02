@@ -24,7 +24,7 @@ func load_data() -> PlayerSaveFile:
 
 func save_data() -> void:
 	# Since this script is autoloaded, this save function can be fired from anywhere!
-	print(save_file.hp)
+	save_file.hp = 10 # reset hp back to 10. HARD CODE
 	ResourceSaver.save(save_file, save_path)
 
 func reset_data() -> void:

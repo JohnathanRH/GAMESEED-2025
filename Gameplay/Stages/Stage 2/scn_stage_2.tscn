@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://boj7lynpl58t5"]
+[gd_scene load_steps=10 format=3 uid="uid://boj7lynpl58t5"]
 
 [ext_resource type="Script" uid="uid://dabcguqucchqd" path="res://Gameplay/Stages/Stage 1/Stage1.gd" id="1_phowi"]
 [ext_resource type="PackedScene" uid="uid://fhjuspelnwbg" path="res://Gameplay/Card/Layout/scn_card_layout.tscn" id="2_7qnfc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cx2ba2pdnkx63" path="res://UI/Component/Enemy Status/scn_enemy_stats.tscn" id="5_57d1p"]
 [ext_resource type="PackedScene" uid="uid://jae2auaur8bf" path="res://UI/Component/Hp Bar/hp_bar.tscn" id="6_2164a"]
 [ext_resource type="PackedScene" uid="uid://cceb780wdmjgn" path="res://Entities/Player/scn_player.tscn" id="7_1libc"]
+[ext_resource type="PackedScene" uid="uid://uvjnt0i5bb2s" path="res://UI/Menus/Option Menu/option_menu.tscn" id="7_7qnfc"]
 [ext_resource type="PackedScene" uid="uid://dlxe4td228wop" path="res://Entities/Enemy/Enemy2/scn_enemy2.tscn" id="8_dod1p"]
 
 [node name="ScnStage2" type="Node2D"]
@@ -42,6 +43,9 @@ visible = false
 [node name="scn_enemy_stats" parent="CanvasLayer" instance=ExtResource("5_57d1p")]
 
 [node name="scn_player_hp" parent="CanvasLayer" instance=ExtResource("6_2164a")]
+
+[node name="OptionMenu" parent="." instance=ExtResource("7_7qnfc")]
+visible = false
 
 [node name="Container" type="Node2D" parent="."]
 position = Vector2(44, 111)

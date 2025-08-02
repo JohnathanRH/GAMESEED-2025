@@ -54,6 +54,10 @@ position = Vector2(44, 111)
 
 [node name="enemy" parent="." instance=ExtResource("8_wlp7u")]
 position = Vector2(263, 112)
+<<<<<<< HEAD
 next_stage_path = "res://Gameplay/Stages/Stage 2/scn_stage_2.tscn"
+=======
+amount = 1
+>>>>>>> d1230d913af5c09050337c753a5eacb076ed32c8
 
 [editable path="Panel/ScnCardLayout"]

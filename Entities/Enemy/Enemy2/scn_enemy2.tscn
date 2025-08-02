@@ -1,19 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlxe4td228wop"]
+[gd_scene load_steps=8 format=3 uid="uid://dlxe4td228wop"]
 
 [ext_resource type="Texture2D" uid="uid://cukxclb2d5koo" path="res://Assets/Entity/EnemySlime.png" id="1_jmy4a"]
 [ext_resource type="Script" uid="uid://bumwhxsf7ucei" path="res://Entities/Enemy/Enemy2/Enemy2.gd" id="2_ximg0"]
 [ext_resource type="Resource" uid="uid://jgy2j2bmxiqc" path="res://Resources/Enemy/enemy2.tres" id="3_jmy4a"]
+[ext_resource type="PackedScene" uid="uid://bxnie5mgpcmo2" path="res://Entities/Enemy/Component/scn_intent_timer.tscn" id="4_stxgs"]
+[ext_resource type="PackedScene" uid="uid://cp4xrrwthuv11" path="res://Entities/Enemy/Component/scn_block_timer.tscn" id="4_xh3ip"]
+[ext_resource type="PackedScene" uid="uid://dgt5k0owhyh3h" path="res://Entities/Enemy/Component/scn_ability_duration.tscn" id="5_6vqif"]
+[ext_resource type="PackedScene" uid="uid://xpqidnnkk5we" path="res://Entities/Enemy/Component/scn_intent_executor.tscn" id="5_yn8q5"]
 
 [node name="enemy" type="Sprite2D" groups=["enemy"]]
 modulate = Color(1, 0, 0, 1)
 texture = ExtResource("1_jmy4a")
 script = ExtResource("2_ximg0")
+amount = 3
 enemy_resource = ExtResource("3_jmy4a")
 
-[node name="intent_timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
+[node name="intent_timer" parent="." instance=ExtResource("4_stxgs")]
 
-[node name="intent_executor" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
+[node name="intent_executor" parent="." instance=ExtResource("5_yn8q5")]
+
+[node name="block_timer" parent="." instance=ExtResource("4_xh3ip")]
+
+[node name="ability_duration" parent="." instance=ExtResource("5_6vqif")]
