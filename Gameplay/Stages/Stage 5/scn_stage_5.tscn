@@ -52,6 +52,7 @@ position = Vector2(44, 111)
 [node name="enemy" parent="." instance=ExtResource("8_ym12p")]
 position = Vector2(263, 112)
 enemy_resource = ExtResource("9_ala2v")
+next_stage_path = "win"
 is_final_enemy = true
 
 [editable path="Panel/ScnCardLayout"]

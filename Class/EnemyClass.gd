@@ -6,7 +6,7 @@ extends Sprite2D
 class_name EnemyClass
 
 @export var enemy_resource : EnemyResource                             # Open Resource/enemy.gd for more info
-@export var next_stage_path : String = "" # for next scene
+@export_enum("1", "2", "3", "4", "5", "win", "lose") var next_stage_path : String = "1"
 @export var is_final_enemy : bool = false   # check if it's the final enemy
 @onready var player_save = PlayerVariables.save_file as PlayerSaveFile # Open player_save_file.gd for more info
 
@@ -34,9 +34,9 @@ func _ready() -> void:
 func die_check() -> void:
 	if enemy_resource.hp <= 0:
 		if is_final_enemy:
-			get_tree().change_scene_to_file("res://Gameplay/Stages/Stage Win/scn_win.tscn") # win scene in final stage
-		elif next_stage_path != "":
-			get_tree().change_scene_to_file(next_stage_path) # go to next stage
+			SceneManager.load_scene("win") # win scene in final stage
+		elif !is_final_enemy:
+			SceneManager.load_scene(next_stage_path) # go to next stage
 			player_save.hp = 10
 			player_save.setHp(player_save.hp)
 		else:
@@ -54,7 +54,7 @@ func basic_attack() -> void:
 		player_save.setHp(player_save.hp - enemy_resource.basic_damage)
 		AudioManager.play_attack()
 		if player_save.hp <= 0:
-			get_tree().change_scene_to_file("res://Gameplay/Stages/Stage Lost/scn_lost.tscn")
+			SceneManager.load_scene("lose")
 
 func block_player_attack() -> void:
 	enemy_resource.setHasShield(true)
