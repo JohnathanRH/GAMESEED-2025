@@ -16,11 +16,13 @@ func on_match_successful(card_type: String):
 	match card_type:
 		"attack":
 			damage_enemy(1) # Deals 2 damage
+			AudioManager.play_attack()
 		"fireball":
 			damage_enemy(2) # Deals 1 damage
+			AudioManager.play_ignite()
 		"shield": 
 			player_save.setShield(true)  # Activate shield
-			print("Used Shield")
+			AudioManager.play_shield_equip()
 		"heal":
 			player_save.setHp(player_save.hp + 2) # Heals 2 hp
 			print(player_save.hp) # debugging
@@ -33,7 +35,6 @@ func on_match_successful(card_type: String):
 			return 99
 
 func damage_enemy(amount: int) -> void:
-	AudioManager.play_attack()
 	if(!enemy_resource.has_shield):
 		current_enemy.hp -= amount
 		print("Enemy takes %d damage. Remaining HP: %d" % [amount, current_enemy.hp])

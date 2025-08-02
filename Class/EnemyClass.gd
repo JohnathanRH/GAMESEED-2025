@@ -50,6 +50,7 @@ func basic_attack() -> void:
 	# Check if player has a shield on
 	if player_save.has_shield:
 		player_save.setShield(false)
+		AudioManager.play_shield_break()
 	else:
 		player_save.setHp(player_save.hp - enemy_resource.basic_damage)
 		AudioManager.play_attack()

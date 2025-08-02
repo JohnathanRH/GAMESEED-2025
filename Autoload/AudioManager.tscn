@@ -1,21 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://bngdfphj178wt"]
+[gd_scene load_steps=10 format=3 uid="uid://bngdfphj178wt"]
 
 [ext_resource type="Script" uid="uid://cgoslvqwcb0u1" path="res://Autoload/AudioManager.gd" id="1_0j6c5"]
-[ext_resource type="AudioStream" uid="uid://dsumhkayba3uw" path="res://Assets/Audio/Card_Flip1.mp3" id="1_fherh"]
-[ext_resource type="AudioStream" uid="uid://bpe0c0m34mct3" path="res://Assets/Audio/Attack_Sound1.mp3" id="2_0j6c5"]
-[ext_resource type="AudioStream" uid="uid://dp6pdexosrc2g" path="res://Assets/Audio/Heal_Sound1.mp3" id="4_207s8"]
+[ext_resource type="AudioStream" uid="uid://c5ms6ql11ucqt" path="res://Assets/Audio/Attack_Sound1.mp3" id="2_0j6c5"]
+[ext_resource type="AudioStream" uid="uid://dyhdrjtcl2iey" path="res://Assets/Audio/Card_Flip1 (1).mp3" id="2_207s8"]
+[ext_resource type="AudioStream" uid="uid://djqdb7g6mk0nc" path="res://Assets/Audio/Card_Flip2.mp3" id="3_srfib"]
+[ext_resource type="AudioStream" uid="uid://dwgwmrw1p4cif" path="res://Assets/Audio/Heal_Sound1.mp3" id="4_207s8"]
+[ext_resource type="AudioStream" uid="uid://7jkuwbn6xisf" path="res://Assets/Audio/Card_Flip3.mp3" id="4_covdj"]
+[ext_resource type="AudioStream" uid="uid://dlignie4d4qts" path="res://Assets/Audio/Ignite_Sound1.mp3" id="7_covdj"]
+[ext_resource type="AudioStream" uid="uid://d2rgh3wkmds65" path="res://Assets/Audio/Shield_Break.mp3" id="8_68sdn"]
+[ext_resource type="AudioStream" uid="uid://bl4bqf8ww2xav" path="res://Assets/Audio/Shield_Equip.mp3" id="9_2am63"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_0j6c5")
 
-[node name="Flip" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_fherh")
-pitch_scale = 2.0
+[node name="Flip1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_207s8")
+
+[node name="Flip2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_srfib")
+
+[node name="Flip3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_covdj")
 
 [node name="Attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_0j6c5")
-pitch_scale = 2.0
 
 [node name="Heal" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_207s8")
-pitch_scale = 2.0
+
+[node name="Ignite" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_covdj")
+
+[node name="ShieldBreak" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_68sdn")
+
+[node name="ShieldEquip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_2am63")

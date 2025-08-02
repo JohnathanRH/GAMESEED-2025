@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_3nmb8")
 hp = 25
-intent_interval = 10.0
+intent_interval = 8.0
 basic_damage = 3.0
+block_duration = 8.0
+ability_duration = 2.0
 metadata/_custom_type_script = "uid://b7pkd4wj6qjtu"

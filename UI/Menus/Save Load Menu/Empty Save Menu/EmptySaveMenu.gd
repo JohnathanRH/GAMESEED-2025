@@ -3,7 +3,7 @@ extends PanelContainer
 @onready var save = PlayerVariables.save_file as PlayerSaveFile
 
 func _on_button_pressed() -> void:
-	var name = $VBoxContainer/TextEdit.text
+	var name = $VBoxContainer/LineEdit.text
 	
 	save.setName(name)
 	save.setLevel(1)

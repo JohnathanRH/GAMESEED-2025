@@ -44,7 +44,7 @@ visible = false
 
 [node name="scn_player_hp" parent="CanvasLayer" instance=ExtResource("6_voogo")]
 
-[node name="OptionMenu" parent="CanvasLayer" instance=ExtResource("7_s5kdf")]
+[node name="OptionMenu" parent="." instance=ExtResource("7_s5kdf")]
 visible = false
 
 [node name="Container" type="Node2D" parent="."]
