@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="PlayerSaveFile" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="PlayerSaveFile" load_steps=2 format=3 uid="uid://cjyk4tobetbwv"]
 
-[ext_resource type="Script" path="res://Save Files/PlayerSaveFile.gd" id="1_l03yp"]
+[ext_resource type="Script" uid="uid://dm7ruk56xplmc" path="res://Save Files/PlayerSaveFile.gd" id="1_l03yp"]
 
 [resource]
 script = ExtResource("1_l03yp")
-name = "Guntur"
+name = "Jonathan"
 hp = 10
-stage = "2"
+stage = "1"
 level = 1
 has_shield = false

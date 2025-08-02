@@ -2,7 +2,15 @@ extends Node2D
 
 @onready var player = PlayerVariables.save_file as PlayerSaveFile
 
+func _ready() -> void:
+	if player.stage == "5":
+		$CanvasLayer/BtnContainer/BtnNext.text = "Restart"
+
 func _on_btn_next_pressed() -> void:
+	if(player.stage == "5"):
+		player.setStage("1")
+		PlayerVariables.save_data()
+		print(player.stage)
 	PlayerVariables.reset_data()
 	SceneManager.load_scene(player.stage)
 
