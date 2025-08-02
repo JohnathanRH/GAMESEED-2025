@@ -1,6 +1,6 @@
 extends PanelContainer
 
-const SAVE_DIR = "res://Save Files/"
+const SAVE_DIR = "user://"
 const SAVE_EXT = ".tres"
 
 @onready var slot_container = $CanvasLayer/VBoxContainer

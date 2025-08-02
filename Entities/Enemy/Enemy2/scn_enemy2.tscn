@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://t3k213d2mhj6" path="res://UI/Component/VFX/scn_vfx.tscn" id="8_yn8q5"]
 
 [node name="enemy" type="Sprite2D" groups=["enemy"]]
-modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
 texture = ExtResource("1_jmy4a")
 script = ExtResource("2_ximg0")
 amount = 3

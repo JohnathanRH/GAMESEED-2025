@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dgt5k0owhyh3h" path="res://Entities/Enemy/Component/scn_ability_duration.tscn" id="7_msbre"]
 
 [node name="enemy" type="Sprite2D" groups=["enemy"]]
-modulate = Color(0.949716, 0.000745449, 0.950719, 1)
+self_modulate = Color(0.94902, 0, 0.94902, 1)
 texture = ExtResource("1_jn65t")
 script = ExtResource("2_i5j0g")
 enemy_resource = ExtResource("3_22qhi")
