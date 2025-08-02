@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cae1s2hj0d2ua"]
+
+[ext_resource type="Script" uid="uid://dg8b3fppcoxil" path="res://UI/Menus/Pause Menu/scn_card_info.gd" id="1_xh6hk"]
+
+[node name="card_info" type="TextureRect"]
+script = ExtResource("1_xh6hk")
+
+[node name="card_icon" type="Sprite2D" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

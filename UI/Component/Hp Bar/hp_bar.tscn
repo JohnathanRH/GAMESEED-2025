@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://csc5vy7wlg6sc" path="res://Assets/Bar/HP_Over.png" id="2_6bi47"]
 [ext_resource type="Texture2D" uid="uid://bjvvwe35w6acl" path="res://Assets/Bar/HP_Process.png" id="3_mvipb"]
 
-[node name="scn_player_hp" type="Node"]
+[node name="scn_player_hp" type="CanvasLayer"]
+layer = 0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 offset_left = 24.0

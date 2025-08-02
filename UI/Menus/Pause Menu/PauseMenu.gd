@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var player = PlayerVariables.save_file as PlayerSaveFile
 var start_menu = "res://UI/Menus/Start Menu/scn_start_menu.tscn"
+var info_panel : NinePatchRect
 
 signal option_pressed
 

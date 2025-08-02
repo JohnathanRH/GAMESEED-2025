@@ -12,7 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cp5ycqq1nr7mx" path="res://Assets/Card/SymbolSword.png" id="10_bn4a8"]
 [ext_resource type="Texture2D" uid="uid://dq28xie3tdhhp" path="res://Assets/Card/SymbolShield.png" id="11_478b7"]
 
-[node name="scn_enemy_stats" type="Node"]
+[node name="scn_enemy_stats" type="CanvasLayer"]
+layer = 0
 script = ExtResource("1_71362")
 
 [node name="intent_bar" type="TextureProgressBar" parent="."]
